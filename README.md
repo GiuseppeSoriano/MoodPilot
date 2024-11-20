@@ -1,7 +1,7 @@
 ![MoodPilot](MoodPilot.png)
-# Passenger Mood Evaluation System
 
-CruiseControl – Implies a smooth, monitored journey where moods are kept in check.
+MoodPilot: Combines "mood" and "pilot" to reflect an emphasis on emotional monitoring for improved guidance.
+
 
 ## Project Overview
 
@@ -42,6 +42,11 @@ We welcome contributions to improve the system. Please follow these steps to con
 2. Create a new branch for your feature or bugfix.
 3. Commit your changes and push the branch to your fork.
 4. Create a pull request with a detailed description of your changes.
+
+## Palette
+Palette by [coolors.co](https://coolors.co/palette/f9dbbd-fca17d-da627d-9a348e-0d0628)
+
+![Palette](Palette.png)
 
 ## License
 
