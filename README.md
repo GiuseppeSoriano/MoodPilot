@@ -1,3 +1,4 @@
+![MoodPilot](MoodPilot.png)
 # Passenger Mood Evaluation System
 
 CruiseControl – Implies a smooth, monitored journey where moods are kept in check.
