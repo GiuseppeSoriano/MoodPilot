@@ -2,7 +2,6 @@
 
 MoodPilot: Combines "mood" and "pilot" to reflect an emphasis on emotional monitoring for improved guidance.
 
-
 ## Project Overview
 
 This project aims to develop an evaluation system for assessing the mood of passengers in self-driving cars or Uber rides. The system will evaluate the driving capacity of the driver during the trip and determine if the passenger(s) experienced any fear or discomfort. Additionally, passengers will be able to rate their trip experience and provide additional comments if they wish.
@@ -51,20 +50,3 @@ Palette by [coolors.co](https://coolors.co/palette/f9dbbd-fca17d-da627d-9a348e-0
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-Ecco una tabella comparativa che evidenzia la presenza o l'assenza di specifiche caratteristiche nel sistema proposto basato sul riconoscimento delle emozioni facciali (FER), nei servizi offerti da Uber e nei taxi tradizionali:
-
-| **Caratteristica**                          | **Sistema Proposto (FER)** | **Uber** | **Taxi Tradizionali** |
-|---------------------------------------------|----------------------------|----------|-----------------------|
-| **Valutazione in tempo reale**              | Presente                   | Assente  | Assente               |
-| **Feedback oggettivo basato su dati biometrici** | Presente                   | Assente  | Assente               |
-| **Dettaglio delle valutazioni**             | Presente                   | Assente  | Assente               |
-| **Feedback non intrusivo**                  | Presente                   | Assente  | Assente               |
-| **Monitoraggio continuo della qualità**     | Presente                   | Assente  | Assente               |
-| **Personalizzazione del servizio**          | Presente                   | Presente | Assente               |
-| **Formazione dei conducenti basata su feedback** | Presente                   | Presente | Assente               |
-| **Gestione della privacy e del consenso**   | Necessaria(FEDERATED LEARNING)                 | Presente | Non applicabile       |
-| **Implementazione tecnologica avanzata**    | Necessaria(FER)                 | Presente | Assente               |
-<!-- | **Accettazione da parte dei passeggeri**    | Da valutare                | Presente | Presente              | -->
-
-Questa tabella evidenzia come il sistema proposto integri diverse caratteristiche innovative rispetto alle soluzioni attuali offerte da Uber e dai taxi tradizionali, pur richiedendo attenzione particolare alla gestione della privacy e all'implementazione tecnologica. 
