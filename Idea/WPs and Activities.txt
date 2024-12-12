@@ -92,5 +92,42 @@ WP5: SYSTEM INTEGRATION
 
 
 WP6: SECURITY AND PRIVACY
+1. Data Encryption:
+   - Implement AES-256 encryption for data stored in the database.  
+   - Configure TLS 1.3 for communications between car controller, backend, and frontend.  
+2. Credential Management and Authentication:
+   - Develop a token-based authentication system (e.g., JWT) for RESTful APIs.  
+   - Create mechanisms for secure credential management (e.g., bcrypt hashing).  
+3. GDPR Compliance and Privacy Policies:
+   - Create tools for users to view, modify, and delete their data.  
+   - Implement anonymization logic for historical data.  
+4. Monitoring and Audit:
+   - Configure monitoring tools to detect suspicious activities.  
+   - Conduct system audits to verify compliance with security and privacy policies.  
+5. Testing and Validation:
+   - Conduct vulnerability tests on APIs and stored data.  
+   - Simulate common attacks (e.g., SQL injection, man-in-the-middle) to ensure system robustness. 
+
+
+WP7: SYSTEM TESTING AND ACCEPTANCE
+1. Unit Testing:
+   - Create and execute unit tests for each component (DB, backend, frontend, car controller).  
+   - Verify code coverage (at least 80%).  
+2. Integration Testing:
+   - Test interactions between the backend and database.  
+   - Verify communication between the car controller and backend.  
+   - Validate frontend-backend interaction through APIs.  
+3. End-to-End Testing:
+   - Simulate complete scenarios, such as a trip with FER data collection, processing, and feedback.  
+   - Verify complete data flow and integrity.  
+4. Performance Testing:
+   - Simulate high loads to test system scalability.  
+   - Measure API response times (<200 ms under normal load).  
+5. Security Testing:
+   - Verify implemented security measures (e.g., encryption, authentication).  
+   - Simulate common attacks (SQL injection, brute force, man-in-the-middle).  
+6. Issue Resolution:
+   - Analyze test results to identify bugs or bottlenecks.  
+   - Resolve issues and retest to confirm fixes. 
 
 
