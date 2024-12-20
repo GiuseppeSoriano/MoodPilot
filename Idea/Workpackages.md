@@ -11,7 +11,7 @@ A well-designed database is essential for efficiently storing and managing data 
 - **End**: Month 2  
 
 #### **Person-Months**  
-- 1 project manager for 2 months (2 person-months).  
+- 1 project manager for 0.5 months (0.5 person-months).  
 - 1 senior developer (DB) for 2 months (2 person-months).  
 
 #### **Objectives**  
@@ -66,7 +66,7 @@ A well-designed database is essential for efficiently storing and managing data 
 - **Project Manager**: €6,000/month  
 
 #### **Total WP1 Cost**  
-- **€22,000**  
+- **€13,000**  
 
 ---
 
@@ -87,7 +87,7 @@ The backend is the core of the system, managing data flow between various compon
 - **End**: Month 4  
 
 #### **Person-Months**  
-- 1 project manager for 3 months (3 person-months).  
+- 1 project manager for 1 months (1 person-months).  
 - 2 backend developers for 3 months (6 person-months).  
 
 #### **Objectives**  
@@ -146,7 +146,7 @@ The backend is the core of the system, managing data flow between various compon
 - **Project Manager**: €6,000/month  
 
 #### **Total WP2 Cost**  
-- **€48,000**  
+- **€36,000**  
 
 ---
 
@@ -163,7 +163,7 @@ The car controller is responsible for running the FER model onboard the vehicle.
 - **End**: Month 5  
 
 #### **Person-Months**  
-- 1 project manager for 3 months (3 person-months).  
+- 1 project manager for 1 months (1 person-months).  
 - 2 embedded developers for 3 months (6 person-months).  
 
 #### **Objectives**  
@@ -218,7 +218,7 @@ The car controller is responsible for running the FER model onboard the vehicle.
 - **Embedded Developer**: €5,500/month  
 
 #### **Total WP3 Cost**  
-- **€51,000**
+- **€39,000**
 
 ### **WP4: Frontend Development (Mobile App)**
 
@@ -233,7 +233,7 @@ The mobile app is the main touchpoint between users (passengers and drivers) and
 - **End**: Month 6  
 
 #### **Person-Months**  
-- 1 project manager for 2 months (2 person-months).  
+- 1 project manager for 0.5 months (0.5 person-months).  
 - 2 frontend developers for 2 months (4 person-months).  
 
 #### **Objectives**  
@@ -287,7 +287,7 @@ The mobile app is the main touchpoint between users (passengers and drivers) and
 - **Frontend Developer**: €4,000/month  
 
 #### **Total WP4 Cost**  
-- **€20,000**
+- **€11,000**
 
 ---
 
@@ -304,7 +304,7 @@ System integration ensures all components (DB, backend, car controller, and mobi
 - **End**: Month 8  
 
 #### **Person-Months**  
-- 1 project manager for 2 months (2 person-months).  
+- 1 project manager for 0.5 months (0.5 person-months).  
 - 1 system integrator for 2 months (2 person-months).  
 
 #### **Objectives**  
@@ -359,7 +359,7 @@ System integration ensures all components (DB, backend, car controller, and mobi
 - **Project Manager**: €6,000/month  
 
 #### **Total WP5 Cost**  
-- **€24,000**
+- **€15,000**
 
 ---
 
@@ -376,7 +376,7 @@ Protecting sensitive data collected by the system is essential to comply with GD
 - **End**: Month 7  
 
 #### **Person-Months**  
-- 1 project manager for 2 months (2 person-months).  
+- 1 project manager for 0.5 months (0.5 person-months).  
 - 1 security expert for 2 months (2 person-months).  
 
 #### **Objectives**  
@@ -431,7 +431,7 @@ Protecting sensitive data collected by the system is essential to comply with GD
 - **Project Manager**: €6,000/month  
 
 #### **Total WP6 Cost**  
-- **€23,000**
+- **€14,000**
 
 ---
 
@@ -448,7 +448,7 @@ Testing and validation are essential to ensure the system meets functional and n
 - **End**: Month 9  
 
 #### **Person-Months**  
-- 1 project manager for 4 months (4 person-months).  
+- 1 project manager for 2 months (2 person-months).  
 - 2 QA engineers for 4 months (8 person-months).  
 
 #### **Objectives**  
@@ -510,35 +510,36 @@ Testing and validation are essential to ensure the system meets functional and n
 
 #### **Cost Per Role (Based on Person-Months)**  
 - **Quality Assurance Engineer**: €5,000/month  
+- **System Engineer**: €5,000/month
 - **Project Manager**: €6,000/month  
 
 #### **Total WP7 Cost**  
-- **€64,000**
+- **€52,000**
 
 ---
 
 ### TOTAL COST
 
 #### **Total WP1 Cost**  
-- **€22,000**  
+- **€13,000**
 
 #### **Total WP2 Cost**
-- **€48,000**
+- **€36,000**
 
 #### **Total WP3 Cost**
-- **€51,000**
+- **€39,000**
 
 #### **Total WP4 Cost**
-- **€20,000**
+- **€11,000**
 
 #### **Total WP5 Cost**
-- **€24,000**
+- **€15,000**
 
 #### **Total WP6 Cost**
-- **€23,000**
+- **€14,000**
 
 #### **Total WP7 Cost**
-- **€64,000**
+- **€52,000**
 
-#### **Grand Total**
-- **€252,000**
+#### **Grand Total Cost**
+- **€180,000**
