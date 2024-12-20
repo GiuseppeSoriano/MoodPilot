@@ -32,8 +32,9 @@ Available on Kaggle (https://www.kaggle.com/datasets/msambare/fer2013). In my mi
 
 ## FER Models
 Already tested and with working code (see fer.ipynb):
-- https://github.com/phamquiluan/ResidualMaskingNetwork
+- [Facial Expression Recognition using Residual Masking Network](https://github.com/phamquiluan/ResidualMaskingNetwork) 
 - [DeepFace](https://github.com/serengil/deepface) (it has a lot of functionalities we can further explore): 
+- [Vision Transformer (ViT) for Facial Expression Recognition Model Card](https://huggingface.co/trpakov/vit-face-expression)
 
 To be tested:
 - https://github.com/tomas-gajarsky/facetorch
