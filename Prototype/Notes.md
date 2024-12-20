@@ -23,3 +23,18 @@ Develop a two-phase approach for FER model usage:
 1. **Experimentation Phase**: Use a resource-intensive model to collect and analyze data during initial testing.  
 2. **Deployment Phase**: Use a lightweight model optimized for real-time FER on the deployed system.  
 
+---
+
+## FER-2013 Dataset
+Available on Kaggle (https://www.kaggle.com/datasets/msambare/fer2013). In my mind we can use the dataset to evaluate the performance of the identified FER models on the Raspberry PI. The performance index that we will consider are:
+- the accuracy
+- the inference time, to calculate the maximum number of frames per second that the model can process.
+
+## FER Models
+Already tested and with working code (see fer.ipynb):
+- https://github.com/phamquiluan/ResidualMaskingNetwork
+- [DeepFace](https://github.com/serengil/deepface) (it has a lot of functionalities we can further explore): 
+
+To be tested:
+- https://github.com/tomas-gajarsky/facetorch
+- EmoNet (couldn't find any relevant implementation)
