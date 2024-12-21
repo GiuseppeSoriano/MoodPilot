@@ -37,5 +37,11 @@ Already tested and with working code (see fer.ipynb):
 - [Vision Transformer (ViT) for Facial Expression Recognition Model Card](https://huggingface.co/trpakov/vit-face-expression)
 
 To be tested:
-- https://github.com/tomas-gajarsky/facetorch
-- EmoNet (couldn't find any relevant implementation)
+- https://github.com/tomas-gajarsky/facetorch (piccoli modelli ma efficienti, da considerare)
+- [EmoNet](https://github.com/face-analysis/emonet)
+
+To DO.
+- Pulire per bene codice e preparare i diversi modelli.
+- Fare in modo che ricevano in input un video e che loggino tutte le emozioni rilevate con relativo timestamp da inizio video per vedere quante vengono rilevate nel complesso del video, poi da qui si potrà capire FPS che Raspberry riesce a gestire facendo formula opportuna. 
+- Provare Emonet e anche facetorch che sembra interesante per la piccola dimensione del modello.
+- In output cercare di capire i vari formati e formattare tutto allo stesso modo anche come valence and arousal (l'emozione alla fine viene rappresentata come un punto in un piano cartesiano con valence e arousal).
