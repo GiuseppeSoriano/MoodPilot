@@ -1,6 +1,6 @@
 ### **Passenger**  
 1.1. Log in to access personal features;  
-1.2. View FER evaluations from previous trips;  
+1.2. View automatic evaluations from previous trips;  
 1.3. Provide manual feedback for trips;  
 1.4. Access, modify, or request deletion of personal data (GDPR compliance);  
 1.5. Receive communications from the administrator (e.g., warnings or system updates);  
@@ -10,7 +10,7 @@
 
 ### **Driver**  
 2.1. Log in to access personal features;  
-2.2. View received evaluations (FER and manual feedback);  
+2.2. View received evaluations;  
 2.3. Provide manual feedback for passengers;  
 2.4. Receive notifications about performance and suggestions for improvement;  
 2.5. Receive communications from the administrator (e.g., warnings, performance updates);  
@@ -21,11 +21,11 @@
 
 ### **Installer Technician**  
 3.1. Log in to access system configuration features;  
-3.2. Configure the FER system in vehicles, including hardware setup and calibration;  
+3.2. Configure the car controller system in vehicles, including hardware setup and calibration;  
 3.3. Verify communication between the car controller and the backend;  
 3.4. Perform system diagnostics and calibration tests;  
 3.5. Update firmware for the car controller;  
-3.6. Configure system-wide parameters (e.g., thresholds for FER analysis);  
+3.6. Configure system-wide parameters;  
 3.7. Monitor the status of installed systems and report any hardware issues.  
 
 ---
