@@ -1,0 +1,336 @@
+.google-form-style {
+    max-width: 600px;
+    min-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.form-section {
+    margin-bottom: 20px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+mat-form-field {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+/* Stili aggiuntivi per la visibilità dei campi di input */
+.mat-form-field-appearance-outline .mat-mdc-form-field-outline {
+    border-color: rgba(0, 0, 0, 0.6) !important; /* Bordi esterni */
+}
+
+.mat-form-field-appearance-outline .mat-mdc-form-field-outline .mat-mdc-form-field-outline-start,
+.mat-form-field-appearance-outline .mat-mdc-form-field-outline .mat-mdc-form-field-outline-end,
+.mat-form-field-appearance-outline .mat-mdc-form-field-outline .mat-mdc-form-field-outline-gap {
+    border-color: rgba(0, 0, 0, 0.6) !important; /* Bordi laterali */
+}
+
+.mat-input-element,
+.mdc-text-field__input {
+    color: rgba(0, 0, 0, 0.87) !important; /* Colore del testo */
+}
+
+.mat-form-field-label,
+.mdc-floating-label {
+    color: rgba(0, 0, 0, 0.6) !important; /* Colore dell'etichetta */
+}
+
+/* Forza la visibilità dei placeholder */
+.mat-form-field-placeholder {
+    color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    align-items: flex-start;
+}
+
+.example-radio-button {
+    margin: 5px 0;
+}
+
+button[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Stili per mat-radio-group e mat-radio-button */
+.mat-radio-group {
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.mat-radio-button .mat-radio-outer-circle {
+    border-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.mat-radio-button .mat-radio-inner-circle {
+    background-color: rgba(0, 0, 0, 0.87) !important;
+}
+
+.mat-radio-button .mat-radio-label-content {
+    color: rgba(0, 0, 0, 0.87) !important;
+}
+
+.mat-radio-button.mat-radio-checked .mat-radio-outer-circle,
+.mat-radio-button.mat-radio-checked .mat-radio-inner-circle {
+    border-color: rgba(0, 0, 0, 0.87) !important;
+    background-color: rgba(0, 0, 0, 0.87) !important;
+}
+
+.mat-radio-button.mat-radio-disabled .mat-radio-label-content {
+    color: rgba(0, 0, 0, 0.38) !important;
+}
+
+.mat-radio-button.mat-radio-disabled .mat-radio-inner-circle,
+.mat-radio-button.mat-radio-disabled .mat-radio-outer-circle {
+    border-color: rgba(0, 0, 0, 0.38) !important;
+}
+
+.google-form-style .mat-expansion-panel-header {
+    background-color: #f5f5f5;
+    color: #333;
+  }
+  
+  .google-form-style .mat-expansion-panel-body {
+    padding: 16px;
+  }
+  
+.google-form-style .mat-expansion-panel {
+    margin-bottom: 20px;
+}
+
+
+
+/* CARICA FOTO */
+
+/* Stile per il pulsante di caricamento file */
+.custom-file-upload {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #145514;
+    color: white;
+    font-size: 14px;
+  }
+  
+  .custom-file-upload mat-icon {
+    margin-right: 8px;
+  }
+  
+  /* Nascondi il vero input file */
+  #file-upload {
+    display: none;
+  }
+  
+  /* Stile per il container delle foto caricate */
+  .photo-preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  
+  /* Stile per ogni anteprima di foto */
+  .photo-preview {
+    position: relative;
+    margin: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 100px;
+    height: 100px;
+  }
+  
+  /* Stile per l'immagine */
+  .photo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Stile per il pulsante di rimozione */
+  .remove-photo-btn {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+  
+  .remove-photo-btn mat-icon {
+    font-size: 16px;
+    color: #f44336;
+    margin: 0; /* Assicurati che non ci siano margini sull'icona */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .puzzle-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .puzzle-block {
+    background-color: #D4E6B5;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    width: 300px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .puzzle-block:hover {
+    transform: scale(1.05);
+    background-color: #AFC97E;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  .puzzle-title {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+  }
+  .subsection-title {
+    position: sticky;
+    width: 94%;
+    padding: 20px;
+    top: 0;
+    z-index: 2000;
+    left: 0;
+    background-color: #f5f8eb;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    font-size: 1.4em;
+
+    justify-content: space-between;
+  }
+  .zoomed-section {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f5f8eb;
+    border-radius: 12px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    width: 80%;
+    max-width: 800px;
+    height: 600px;
+  }
+  .root-failure-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-content: center;
+    max-width: 1000px;
+    padding: 30px;
+    height: fit-content;
+  }
+  .zoomed-subsection {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f5f8eb;
+    /* padding: 30px; */
+    border-radius: 12px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 1100;
+    width: 70%;
+    max-width: 700px;
+    height: 600px;
+  }
+  .form-section {
+    padding: 30px 50px;
+  }
+  mat-icon {
+    margin-right: 8px;
+  }
+  .back-button {
+    margin-top: 20px;
+  }
+
+.submit-botton{
+    background-color: #0D0528 !important;
+    color: white !important;
+    font-size: 20px !important;
+    height: 50px !important;
+    width: 100% !important;
+}
+
+.submit-botton:hover{
+    background-color: #DA627D !important;
+    /* background-color: #9A348E !important; */
+    transform: scale(1.03);
+    transition: transform 0.5s;
+}
+
+.close-button{
+  font-size: 18px !important;
+}
+
+
+.star-rating {
+  margin-bottom: 1.5rem;
+}
+
+.stars {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  cursor: pointer;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 12px;
+  padding-top: 6px;
+}
+
+mat-icon {
+  font-size: 30px;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+mat-icon.selected {
+  /* color: #FFD700; */
+  color: #DA627D; 
+}
+
+mat-icon:hover {
+  color: #DA627D;
+}
+
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; background-color: #F9DBBD;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

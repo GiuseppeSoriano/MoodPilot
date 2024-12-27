@@ -1,0 +1,58 @@
+<div class="box" [class.box--dragover]="isDragOver" 
+     (drop)="onDrop($event)" 
+     (dragover)="onDragEnter($event)" 
+     (dragleave)="onDragLeave($event)">
+
+  <!-- Icona di caricamento -->
+  <img src="../../../assets/images/upload.png" alt="Upload Icon" class="upload-icon" [hidden]="!!droppedFile || isRecording || videoUrl" />
+
+  <!-- Anteprima del video -->
+  <div class="video-preview" *ngIf="isRecording || videoUrl">
+    <!-- Mostra lo stream live -->
+    <video #liveVideo *ngIf="isRecording" autoplay muted playsinline></video>
+    <!-- Mostra il video registrato o caricato -->
+    <video #videoPlayer [src]="videoUrl" *ngIf="!isRecording && videoUrl" controls></video>
+  </div>
+
+  <!-- Input file nascosto -->
+  <input #fileInput type="file" accept="video/*" hidden (change)="onFileSelected($event)" />
+
+  <!-- Etichetta -->
+  <label class="drag-drop-label" *ngIf="!videoUrl && !isRecording">
+    <strong>Drag & Drop files here</strong>
+    <span class="box__dragndrop"> or click below</span>
+  </label>
+
+  <!-- Messaggi di errore -->
+  <div *ngIf="isError" class="error-message">{{ errorMessage }}</div>
+
+  <div>
+    <!-- Pulsante per caricare un file -->
+    <button mat-raised-button type="button" class="manual-upload-button" (click)="triggerFileInput()" *ngIf="!videoUrl && !isRecording">
+      Select File
+    </button>
+  </div>
+
+  <label class="drag-drop-label" *ngIf="!videoUrl && !isRecording">
+      <span class="box__dragndrop"> or click below to </span>
+    <strong>Record live</strong>
+  </label>
+
+  <div>
+
+    <!-- Pulsante per avviare la registrazione -->
+    <button mat-raised-button type="button" class="record-button" (click)="startRecording()" *ngIf="!isRecording && !videoUrl">
+      Record Video
+    </button>
+
+    <!-- Pulsante per interrompere la registrazione -->
+    <button mat-raised-button type="button" class="stop-button" (click)="stopRecording()" *ngIf="isRecording">
+      Stop Recording
+    </button>
+
+    <!-- Pulsante per rimuovere il file -->
+    <button mat-raised-button type="button" class="remove-file-btn" (click)="removeFile()" *ngIf="videoUrl">
+      Remove Video
+    </button>
+  </div>
+</div>

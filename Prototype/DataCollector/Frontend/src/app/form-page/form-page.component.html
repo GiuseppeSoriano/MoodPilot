@@ -1,0 +1,62 @@
+<header>
+    <nav>
+        <div class="logo">
+            <label>
+                <img src="../../assets/images/Logo.png" alt="Logo">
+            </label>
+        </div>
+    </nav>
+  </header>
+  <main>
+    <form [formGroup]="rideFeedbackForm" class="google-form-style">
+      <!-- (ngSubmit)="onSubmit()" -->
+  
+      <div class="question-section">
+        <div class="question">
+          <label>1. How would you rate your level of comfort throughout the ride?</label>
+          <div class="stars">
+            <mat-icon *ngFor="let star of stars; let i = index"
+                      [ngClass]="{'selected': i < rideFeedbackForm.get('comfort')?.value}"
+                      (click)="setRating('comfort', i + 1)">
+              {{ i < rideFeedbackForm.get('comfort')?.value ? 'star' : 'star_border' }}
+            </mat-icon>
+          </div>
+        </div>
+  
+        <div class="question">
+          <label>2. How safe did you feel during the trip?</label>
+          <div class="stars">
+            <mat-icon *ngFor="let star of stars; let i = index"
+                      [ngClass]="{'selected': i < rideFeedbackForm.get('safety')?.value}"
+                      (click)="setRating('safety', i + 1)">
+              {{ i < rideFeedbackForm.get('safety')?.value ? 'star' : 'star_border' }}
+            </mat-icon>
+          </div>
+        </div>
+  
+        <div class="question">
+          <label>3. How would you rate your overall experience?</label>
+          <div class="stars">
+            <mat-icon *ngFor="let star of stars; let i = index"
+                      [ngClass]="{'selected': i < rideFeedbackForm.get('experience')?.value}"
+                      (click)="setRating('experience', i + 1)">
+              {{ i < rideFeedbackForm.get('experience')?.value ? 'star' : 'star_border' }}
+            </mat-icon>
+          </div>
+        </div>
+  
+        <div class="question">
+          <label>4. Were there any specific moments during the ride that caused discomfort or concern?</label>
+          <mat-radio-group formControlName="specificMoments">
+            <mat-radio-button value="none">None</mat-radio-button><br>
+            <mat-radio-button value="fewMoments">A few moments (e.g., sudden braking or harsh turns)</mat-radio-button><br>
+            <mat-radio-button value="frequentMoments">Frequent moments (persistent discomfort throughout the ride)</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+
+      <app-drag-drop></app-drag-drop>
+      
+      <button mat-raised-button class="submit-botton" type="button" (click)="onSubmit()">SUBMIT</button>
+    </form>
+  </main>

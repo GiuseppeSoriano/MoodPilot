@@ -1,0 +1,161 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+  border: 1px dashed #0D0628;
+}
+
+/* La classe .box gestisce il contenitore principale */
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: 150px; /* Altezza minima per contenuti centrati */
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* La classe .box__input mantiene l'input organizzato */
+.box__input {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+}
+
+/* Icona di upload */
+.upload-icon {
+  width: 100px;
+  height: 100px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Etichetta testuale */
+.drag-drop-label {
+  display: block;
+  font-size: 18px;
+  margin-top: 15px;
+  color: #0D0628;
+}
+
+/* Messaggi di errore */
+.error-message {
+  display: block;
+  font-size: 18px;
+  margin-top: 10px;
+  color: #EF8354;
+}
+
+/* Pulsante per selezionare file */
+.manual-upload-button,
+.record-button,
+.stop-button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #0D0628;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 200px;
+}
+
+.manual-upload-button:hover,
+.record-button:hover,
+.stop-button:hover {
+  background-color: #DA627D;
+  transform: scale(1.05);
+}
+
+/* Pulsante di rimozione file */
+.remove-file-btn {
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: #EF8354;
+  color: white;
+  font-size: 14px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.remove-file-btn:hover {
+  background-color: #eb7340;
+  transform: scale(1.05);
+}
+
+/* Preview del file selezionato */
+.file-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #0D0628;
+  border-radius: 5px;
+  background-color: #f0edee;
+  color: #0D0628;
+  font-size: 14px;
+}
+
+/* Effetto drag-over */
+.box--dragover {
+  background-color: #dcdcdc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.box--dragover .upload-icon {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+/* Gestione degli stati */
+.box__uploading,
+.box__success,
+.box__error {
+  display: none;
+}
+
+.box.is-uploading .box__uploading,
+.box.is-success .box__success,
+.box.is-error .box__error {
+  display: block;
+}
+
+.box.is-uploading .box__input,
+.box.is-success .box__input,
+.box.is-error .box__input {
+  visibility: hidden;
+}
+
+.video-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%; /* Adatta alla larghezza del contenitore */
+  max-width: 600px; /* Fissa una larghezza massima */
+  margin: 0 auto; /* Centra la preview */
+  overflow: hidden; /* Nasconde il contenuto in eccesso */
+  border: 1px solid #0D0628; /* Bordo opzionale */
+  border-radius: 8px; /* Angoli arrotondati */
+  background-color: #f0f0f0; /* Sfondo neutro */
+  margin-bottom: 20px;
+}
+
+.video-preview video {
+  width: 100%; /* Fissa la larghezza */
+  height: auto; /* Adatta l'altezza mantenendo il rapporto di aspetto */
+  display: block; /* Rimuove eventuali spazi bianchi sotto il video */
+}
