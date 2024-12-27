@@ -1,1 +1,7 @@
 .DS_Store
+**/__pycache__/
+**/logs/
+Prototype/FER/Models/ExampleVideos/
+Prototype/FER/Models/RMN/deploy.prototxt.txt
+Prototype/FER/Models/RMN/pretrained_ckpt
+Prototype/FER/Models/RMN/res10_300x300_ssd_iter_140000.caffemodel
