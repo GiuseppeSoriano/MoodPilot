@@ -48,14 +48,14 @@
         <div class="question">
           <label>4. Were there any specific moments during the ride that caused discomfort or concern?</label>
           <mat-radio-group formControlName="specificMoments">
-            <mat-radio-button value="none">None</mat-radio-button><br>
-            <mat-radio-button value="fewMoments">A few moments (e.g., sudden braking or harsh turns)</mat-radio-button><br>
-            <mat-radio-button value="frequentMoments">Frequent moments (persistent discomfort throughout the ride)</mat-radio-button>
+            <mat-radio-button value="1">None</mat-radio-button><br>
+            <mat-radio-button value="2">A few moments (e.g., sudden braking or harsh turns)</mat-radio-button><br>
+            <mat-radio-button value="3">Frequent moments (persistent discomfort throughout the ride)</mat-radio-button>
           </mat-radio-group>
         </div>
       </div>
 
-      <app-drag-drop></app-drag-drop>
+      <app-drag-drop (fileUploaded)="handleVideoUpload($event)"></app-drag-drop>
       
       <button mat-raised-button class="submit-botton" type="button" (click)="onSubmit()">SUBMIT</button>
     </form>

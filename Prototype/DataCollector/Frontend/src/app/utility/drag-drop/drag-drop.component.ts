@@ -93,8 +93,11 @@ export class DragDropComponent implements OnInit, OnDestroy {
 
       this.mediaRecorder.onstop = () => {
         const videoBlob = new Blob(this.recordedChunks, { type: 'video/webm' });
+
+        const videoFile = new File([videoBlob], 'recorded_video.webm', { type: 'video/webm' });
+
         this.videoUrl = URL.createObjectURL(videoBlob);
-        this.fileUploaded.emit(videoBlob);
+        this.fileUploaded.emit(videoFile);
 
         this.stopLiveStream(); // Ferma lo stream live
         this.isRecording = false;
