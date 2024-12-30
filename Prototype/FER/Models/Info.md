@@ -12,7 +12,7 @@ This project integrates multiple Facial Emotion Recognition (FER) models, such a
 
 - **Customizable Inputs**: The function accepts both video file inputs and live camera feeds. If the input is `"camera"`, the function will access the webcam for live processing.
 
-- **Smoothing**: For more stable emotion predictions, recent predictions are smoothed. A buffer of previous results is maintained, and the most frequent emotion and average confidence are used for the final output.
+- **Smoothing**: For more stable emotion predictions, recent predictions are smoothed. A buffer of previous results is maintained, and the most frequent emotion and average confidence are used for the final output. Note that this smoothing process is not applied to EmoNet.
 
 ### **Functionality of `process_video`**
 
