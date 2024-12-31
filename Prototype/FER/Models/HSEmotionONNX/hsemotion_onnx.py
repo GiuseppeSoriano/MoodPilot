@@ -5,6 +5,7 @@ from collections import deque
 from hsemotion_onnx.facial_emotions import HSEmotionRecognizer
 import time
 import os
+from picamera2 import Picamera2
 
 # Initialize Haar Cascade for face detection
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
@@ -27,15 +28,27 @@ def get_log_filename(base_name="logs/emotion_log"):
             return filename
         counter += 1
 
-def process_video(video_file, show_preview=True):
-    # Determine video source
-    video_source = 0 if video_file == "camera" else video_file
+def init_picamera():
+    # Initialize the picamera
+    picam2 = Picamera2()
+    picam2.configure(picam2.create_still_configuration())
+    picam2.start()
 
-    # Open video capture
-    cap = cv2.VideoCapture(video_source)
-    if not cap.isOpened():
-        print(f"Error: Could not open video source '{video_source}'.")
-        return
+    return picam2
+
+def process_video(video_file, show_preview=True):
+    # Initialize the picamera
+    picam2 = init_picamera() if video_file == "camera" else None
+
+    # If we're using a video file, initialize the VideoCapture
+    if not picam2:
+        video_source = video_file
+        cap = cv2.VideoCapture(video_source)
+        if not cap.isOpened():
+            print(f"Error: Could not open video source '{video_source}'.")
+            return
+    else:
+        cap = None
 
     # Generate a unique log filename
     log_filename = get_log_filename()
@@ -47,9 +60,14 @@ def process_video(video_file, show_preview=True):
     start_time = time.time()
 
     while True:
-        success, frame = cap.read()
-        if not success:
-            break
+        if picam2:
+            # Capture frame from PiCamera2
+            frame = picam2.capture_array()
+        elif cap:
+            # Capture frame from VideoCapture
+            success, frame = cap.read()
+            if not success:
+                break
 
         # Convert to grayscale for Haar Cascade
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -73,8 +91,11 @@ def process_video(video_file, show_preview=True):
                 emotion_idx = np.argmax(avg_scores)
                 emotion_label = emotion_recognizer.idx_to_class[emotion_idx]
 
-                # Get the current timestamp
-                timestamp = cap.get(cv2.CAP_PROP_POS_MSEC) / 1000.0  # Convert to seconds
+                if video_file == "camera":
+                    # Get the current timestamp
+                    timestamp = time.time()
+                else:
+                    timestamp = cap.get(cv2.CAP_PROP_POS_MSEC) / 1000.0  # Convert to seconds
 
                 # Log emotion and score
                 log_file.write(f"{timestamp:.2f},{emotion_label},{avg_scores.tolist()}\n")
@@ -112,7 +133,10 @@ def process_video(video_file, show_preview=True):
     log_file.close()
 
     # Release resources
-    cap.release()
+    if picam2:
+        picam2.stop()
+    if cap:
+        cap.release()
     if show_preview:
         cv2.destroyAllWindows()
         cv2.waitKey(1)
