@@ -6,6 +6,17 @@ from hsemotion_onnx.facial_emotions import HSEmotionRecognizer
 import time
 import os
 from picamera2 import Picamera2
+import signal
+
+# Global flag to stop processing
+stop_flag = False
+
+def signal_handler(sig, frame):
+    global stop_flag
+    stop_flag = True
+
+# Register the signal handler
+signal.signal(signal.SIGINT, signal_handler)
 
 # Initialize Haar Cascade for face detection
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
@@ -37,6 +48,8 @@ def init_picamera():
     return picam2
 
 def process_video(video_file, show_preview=True):
+    global stop_flag
+
     # Initialize the picamera
     picam2 = init_picamera() if video_file == "camera" else None
 
@@ -59,7 +72,7 @@ def process_video(video_file, show_preview=True):
     frame_count = 0
     start_time = time.time()
 
-    while True:
+    while not stop_flag:
         if picam2:
             # Capture frame from PiCamera2
             frame = picam2.capture_array()
@@ -149,8 +162,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="HSEmotionONNX: Real-time facial emotion recognition.")
 
     parser.add_argument("--video", type=str, default="camera", help="Path to video file or 'camera' for live feed.")
-    parser.add_argument("--preview", type=bool, default=True, help="Whether to show video preview during processing.")
+    parser.add_argument("--no-preview", action="store_false", help="Disable video preview during processing.")
     args = parser.parse_args()
 
     # Process the video
-    process_video(args.video, show_preview=args.preview)
+    process_video(args.video, show_preview=args.no_preview)
