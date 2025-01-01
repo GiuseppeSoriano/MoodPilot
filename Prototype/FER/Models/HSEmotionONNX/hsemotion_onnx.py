@@ -63,6 +63,8 @@ def process_video(video_file, show_preview=True):
         if picam2:
             # Capture frame from PiCamera2
             frame = picam2.capture_array()
+            # Resize the frame using OpenCV
+            frame = cv2.resize(frame, (640, 480))
         elif cap:
             # Capture frame from VideoCapture
             success, frame = cap.read()
