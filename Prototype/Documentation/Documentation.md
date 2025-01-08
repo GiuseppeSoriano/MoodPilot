@@ -139,15 +139,7 @@ Each of the six core emotions has distinguishing features:
 
 Ekman’s studies demonstrated that these emotions are universally recognized through facial expressions, even in cultures isolated from global influences. For instance, widened eyes and raised eyebrows universally signal surprise, while smiles denote happiness. This universality suggests a biological basis for basic emotions, enabling effective nonverbal communication.
 
-### 2.2.3. Evolutionary Significance
 
-Basic emotions play critical roles in survival and social interaction:
-
-- **Survival**: Emotions like fear and anger prepare the body for immediate action.
-- **Communication**: Facial expressions convey emotional states, facilitating understanding and cooperation.
-- **Social Bonding**: Emotions like happiness and sadness strengthen relationships by eliciting empathy and support.
-
-By providing a structured understanding of emotions, Discrete Emotion Theory lays the groundwork for practical applications such as Facial Expression Recognition (FER), enhancing human-computer interaction and social robotics.
 
 ## 2.3. The Circumplex Model: Valence and Arousal
 
@@ -159,7 +151,7 @@ Developed by James Russell, the Circumplex Model (depicted in Figure \ref{fig:ci
 
 By plotting emotions within this two-dimensional space, the Circumplex Model illustrates how different emotions relate to one another. For instance, emotions like excitement (high arousal, positive valence) and calmness (low arousal, positive valence) are positioned accordingly, highlighting the continuous nature of emotional experiences.
 
-Understanding these models is essential for fields such as Facial Expression Recognition (FER), as they provide frameworks for interpreting and categorizing human emotions based on observable cues.
+These models are vital for fields like Facial Expression Recognition (FER), as they offer structured frameworks for interpreting and categorizing human emotions based on observable cues, thereby advancing human-computer interaction and social robotics.
 
 \begin{figure}
     \centering
