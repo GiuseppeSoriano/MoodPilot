@@ -218,9 +218,29 @@ By integrating these objectives, the study provides a solid foundation for emoti
 
 # 2. State of the Art
 
-## 2.1. Bidirectional Feedback Limitations in Ride-Hailing Services
+This section provides a comprehensive review of the **State of the Art**, highlighting advancements and challenges in key technological domains. It examines the limitations of two-way rating systems within ride-hailing platforms, explores the integration of Facial Emotion Recognition (FER) technologies to enhance user experience and safety in automotive contexts, and evaluates the deployment of FER systems on edge devices, emphasizing their potential for real-time, privacy-preserving applications in resource-constrained environments.
+
+## 2.1. Two-ways Rating System Limitations in Ride-Hailing Services
+
+Reputation systems play a pivotal role in ride-sharing platforms, serving as a self-regulation mechanism that aims to ensure service quality and accountability. The two-way rating system, where both drivers and passengers evaluate each other, has become the industry standard; however, its **limitations** have been widely discussed in the literature. Studies highlight that while such systems are designed to exclude low-rated users, their effectiveness is often constrained by the platform's structural and incentive-based shortcomings. For instance, compliance with platform rules remains imperfect even under ideal rating conditions, and the perceived cost of rebuilding a damaged reputation may not always be sufficient to incentivize quality service delivery. Furthermore, the *opacity* of reputation algorithms, while controversial, can paradoxically enhance compliance by preserving an element of uncertainty about how penalties are applied [@Platform-mediated-reputation-systems-in-the-sharing-economy].
+
+Despite the potential of ride-sharing systems to promote sustainability, reduce car usage, and increase vehicle occupancy, they face significant barriers that hinder their development and adoption. A systematic review identifies **economic**, **technological**, **behavioral**, and **regulatory** challenges as critical factors affecting user participation and system efficiency. User-specific attributes, such as sociodemographics and location, also play a role in shaping ride-sharing behavior, although their influence shows *mixed results* across different studies. Additionally, the lack of integration with public transport and concerns over safety further limit scalability [@Ride-sharing-A-systematic-review-of-user-factors-and-barriers]. At the core of these challenges lies the reliance on rating systems, which often fail to capture the *complexity* of service quality evaluation. Ratings may be biased due to **fear of retaliation** or unclear criteria, reducing their fairness and accuracy as a quality metric. Moreover, differences in operational contexts, payment methods, and user trip purposes complicate the creation of standardized reputation mechanisms, as seen in cross-national analyses [@Understanding-ride-sharing-systems-in-urban-areas].
+
+To address these limitations, researchers have proposed integrating reputation systems with real-time contextual data, such as trip purpose and environmental factors, to provide a more nuanced evaluation of service quality. The concept of cross-platform **reputation portability** has also emerged as a potential solution, allowing users to transfer their reputation across different platforms, thereby incentivizing better service standards. Furthermore, targeting specific user types, such as **solo work commuters** or recreational users, could enhance the effectiveness of ride-sharing services by tailoring offerings to diverse needs [@Platform-mediated-reputation-systems-in-the-sharing-economy] [@Understanding-ride-sharing-systems-in-urban-areas]. While the two-way rating system remains a foundational element of ride-sharing platforms, these findings underscore the need for more **adaptive** and **transparent** mechanisms that can overcome current inefficiencies and foster greater trust and participation among users.
 
 ## 2.2. Facial Emotion Recognition (FER) in Automotive Contexts
+
+The ability to recognize and interpret human emotions has emerged as a critical component in the development of emotion-aware automotive systems. Facial Emotion Recognition (FER) offers significant potential in this area, enabling vehicles to adapt to users’ emotional states and enhance the overall driving experience. Recent research underscores the importance of FER in both traditional and autonomous vehicles, addressing various applications and challenges in human-vehicle interaction.
+
+Driving often elicits **emotional states** such as stress, frustration, or anger, which can influence safety, comfort, and decision-making on the road. A comprehensive survey of emotion recognition in automotive contexts highlights a preference for monitoring high-arousal, negative-valence states, which are strongly associated with driver behavior and road safety risks. Common methodologies include the use of multimodal signals such as cardiac and electrodermal activity, speech analysis, and facial expressions. These are processed using supervised machine learning models to infer underlying emotional states [@Driver-emotion-recognition-for-intelligent-vehicles].
+
+As the focus shifts from drivers to passengers in the context of autonomous vehicles (AVs), FER applications are expanding to include enhancing passenger experience. Emotion-aware systems can adapt driving styles to create more pleasant journeys, tailor infotainment systems to individual preferences, and manage group affect to ensure collective comfort. Multimodal approaches combining visual and audio inputs are essential in these scenarios, addressing challenges such as **context awareness**, multi-passenger diarization, and personalization. Researchers also emphasize the importance of **explainability** and privacy in developing these systems [@Emotion-recognition-in-autonomous-vehicles].
+
+In connected and automated vehicles (CAVs), affective interaction frameworks are becoming increasingly sophisticated. These frameworks integrate knowledge from various disciplines, including human-machine interaction, automotive engineering, and communication. FER plays a pivotal role in facilitating **human-vehicle-road systems** by detecting, regulating, and responding to user emotions in real-time. Such systems aim to improve the acceptance, safety, and comfort of CAVs, offering a more natural and enjoyable user experience. However, the design of these frameworks demands a deep understanding of multimodal emotional expressions and their interplay with vehicular networking. Promising research directions include advancing multimodal emotion detection, refining emotion regulation strategies, and exploring applications for group interactions and dynamic scenarios [@Affective-human-vehicle-interaction-in-CAVs].
+
+Despite these advances, several challenges remain. Accurate FER systems must contend with variability in lighting, seating positions, and cultural differences in emotional expression. Moreover, ensuring user **privacy** and implementing ethical data handling practices are critical to fostering trust in emotion-aware automotive systems. Future research should focus on **holistic modelling** approaches that integrate multiple data streams while addressing the unique constraints of vehicular environments.
+
+By incorporating FER into automotive systems, the industry moves closer to achieving adaptive, user-centered vehicles that enhance safety, comfort, and overall satisfaction. The integration of emotion recognition technologies into intelligent vehicles not only addresses immediate concerns like road safety but also paves the way for innovative user experiences in next-generation mobility solutions.
 
 ## 2.3. Facial Emotion Recognition (FER) on Edge Devices
 
@@ -236,82 +256,359 @@ The study concludes that systems leveraging lightweight FD models like Yoloface-
 
 # 3. System Description
 
+The system architecture for the MoodPilot project is designed to seamlessly integrate data collection, processing, and user interaction across its components. The following describes the main components of the system:
+
+**Database:**
+The system utilizes MongoDB as the primary database to store structured and unstructured data. This includes user data, ride logs, emotional feedback, and FER (Facial Emotion Recognition) model outputs. MongoDB’s flexibility and scalability ensure efficient handling of data streams and support for real-time updates.
+
+**Backend:**
+The backend is implemented using Flask, a lightweight and extensible Python web framework. It acts as the central hub, managing requests from the frontend and car controllers. Flask handles:
+
+- Communication with the database for data storage and retrieval.
+- Processing and aggregation of data to provide meaningful insights.
+- Integration with the model used to respond automatically to forms based on emotional data, reducing the computational load on the car controller.
+- Secure authentication and session management for mobile app users.
+
+**Car Controller:**
+The car controller is an embedded system integrated within the vehicle, responsible for running the FER model. It processes live video streams or images captured within the vehicle to evaluate the emotional states of passengers. The FER model provides real-time feedback on passenger satisfaction, which is logged in the database and analyzed for service improvement. The car controller communicates with the backend to sync evaluation data. By offloading the execution of the form-response model to the backend, the car controller focuses solely on the FER model, ensuring optimal performance.
+
+**Frontend:**
+The frontend is a mobile application designed to provide a user-friendly interface for passengers. The app includes features such as:
+
+- Booking ride-hailing services.
+- Viewing and tracking ongoing rides.
+- Providing feedback about the ride experience.
+- Accessing a history of previous rides and satisfaction scores.
+- Visualizing real-time metrics of ride quality, such as safety and comfort scores derived from FER and sensor data.
+  The mobile app communicates with the backend through secure APIs to ensure seamless service.
+
+**Security and Privacy:**
+The system incorporates robust security measures to protect user data and maintain privacy. This includes:
+
+- End-to-end encryption for data transmission.
+- Anonymization of sensitive passenger data during FER processing.
+- Regular audits and compliance with data protection regulations.
+
+Overall, the system is built with scalability and modularity in mind, allowing for future extensions, such as integrating additional sensors, refining FER models for enhanced performance, or supporting advanced analytics and reporting tools.
+
 \newpage
 
 # 4. Facial Expression Recognition (FER) Performance Analysis
 
+Facial Expression Recognition (FER) systems are critical in understanding human emotions through visual cues, offering applications in diverse fields such as human-computer interaction, mental health assessment, and automotive contexts. This section delves into the datasets and models used for training and evaluating FER systems, with a particular emphasis on their performance and suitability for real-world applications.
+
 ## 4.1. Datasets
 
-The datasets described here will be referenced later in the Models section to indicate their use in training and evaluating the models. Below is a summary of the datasets:
+The datasets described in this section are central to the development and benchmarking of FER models. They are referenced throughout the document to indicate their specific use cases in training and evaluation.
 
 ### 4.1.1. FER2013  
-[@FER2013] is a dataset comprising 32,298 grayscale images of faces, each sized 48x48 pixels, labeled with seven emotions: Angry (0), Disgust (1), Fear (2), Happy (3), Sad (4), Surprise (5), and Neutral (6). Images are centered and uniformly scaled. The dataset includes 28,709 training samples and 3,589 test samples, with the task being to classify facial expressions into one of the seven categories.
+FER2013 [@FER2013] is a widely-used dataset for facial expression recognition, containing 48x48 pixel grayscale images of faces. Each image has been automatically aligned and scaled so that the face is centered and occupies a similar amount of space across samples. The dataset includes seven emotion categories: 
+
+- **Angry (0)**
+- **Disgust (1)**
+- **Fear (2)**
+- **Happy (3)**
+- **Sad (4)**
+- **Surprise (5)**
+- **Neutral (6)**
+
+FER2013 comprises 28,709 training samples and 3,589 test samples. The task involves classifying each image into one of the seven predefined emotional categories. The dataset's relatively small resolution and balanced scaling make it a suitable benchmark for evaluating FER models, although its limited variability in facial contexts poses challenges for generalization.
 
 ### 4.1.2. AffectNet  
-[@AffectNet] addresses the scarcity of annotated facial expression datasets in the wild, particularly for the **continuous dimensional model** (e.g., valence and arousal) alongside **discrete emotions** (categorical model). It contains over 1 million facial images collected from the internet using 1,250 emotion-related keywords in six languages. Approximately 440,000 images were manually annotated for eight discrete emotions and valence/arousal intensity. The dataset also includes "contempt" as an eighth emotion, making it more comprehensive than FER2013. AffectNet facilitates research in both categorical and dimensional emotion models.
+AffectNet [@AffectNet] addresses the scarcity of large-scale, annotated facial expression datasets, especially those covering both discrete emotion categories and continuous affect dimensions (valence and arousal). AffectNet is currently the largest facial expression dataset, containing over 1 million facial images collected from the internet using 1,250 emotion-related keywords in six languages. Of these, approximately 440,000 images were manually annotated.
 
-<!-- Migliorare il formato in cui vengono presentati i diversi modelli che non mi piace molto... specialmente in termini grafici nel pdf finale. -->
+- **Categorical Model**: The dataset includes eight discrete emotion labels: 
+  - **Angry**
+  - **Disgust**
+  - **Fear**
+  - **Happy**
+  - **Sad**
+  - **Surprise**
+  - **Neutral**
+  - **Contempt**
+
+- **Dimensional Model**: Each image is also annotated for valence (positive to negative emotional intensity) and arousal (level of emotional activation). 
+
+AffectNet's diverse and comprehensive annotations make it a versatile resource for FER research in both categorical and dimensional frameworks. The dataset’s scale and annotation quality support the development of robust models capable of handling real-world variability in facial expressions.
+
 ## 4.2. Models
-This section introduces several models for Facial Expression Recognition (FER). Each model is presented with a brief description, the dataset it utilizes (if not otherwise specified, for both training and testing), and its performance metrics on that dataset.
+
+In the following the primary models used in FER research and their performance on the aforementioned datasets are presented. Each model is described briefly, including its architecture, dataset usage, and key performance metrics.
 
 ### 4.2.1. DeepFace  
-**Description:** DeepFace [@DeepFace], [@serengil2021lightface] is a lightweight Python framework for face recognition and facial attribute analysis, including emotion detection, age, gender, and ethnicity prediction. It integrates various state-of-the-art models such as VGG-Face, FaceNet, and ArcFace.  
-**Dataset Used:** FER2013  
-**Accuracy:** 57.42%
+DeepFace is a lightweight and versatile Python framework designed for face recognition and facial attribute analysis, including emotion detection, age, gender, and ethnicity prediction [@DeepFace]. It serves as a hybrid platform that wraps state-of-the-art models such as VGG-Face, FaceNet, OpenFace, DeepFace, DeepID, ArcFace, and others, enabling a wide range of facial analysis applications. 
+
+The framework implements a modern facial recognition pipeline, automating key steps such as face detection, alignment, normalization, representation, and verification. This design ensures that users can perform complex facial analysis tasks with minimal configuration, leveraging DeepFace's intuitive API. For emotion recognition specifically, DeepFace integrates robust pre-trained models capable of classifying facial expressions into categories such as anger, happiness, sadness, and more.
+
+DeepFace's modular architecture supports various backends for face detection, including OpenCV, MTCNN, and RetinaFace, providing flexibility in balancing speed and accuracy. For emotion recognition, it uses facial embeddings generated by convolutional neural networks (CNNs), allowing efficient and accurate classification. The framework also supports multiple distance metrics, such as cosine similarity and Euclidean distance, to compute facial similarities in verification tasks.
+
+By offering high-level abstractions and combining cutting-edge techniques, DeepFace achieves competitive performance on datasets like **FER2013**, with an accuracy of **57.42%**. Its ease of integration and ability to leverage multiple advanced models make it an essential tool for both research and real-world applications in facial expression recognition and analysis.
 
 ### 4.2.2. HSEmotionONNX  
-**Description:** [@savchenko2023facial], [@savchenko2021facial], [@Savchenko_2022_CVPRW], [@Savchenko_2022_ECCVW], [@savchenko2022classifying] A collection of ONNX-compatible (Open Neural Network Exchange standard) models *pre-trained* for face identification using [VGGFace2](https://github.com/ox-vgg/vgg_face2) (Dataset for Face Recognition) and optimized for emotion recognition on AffectNet.  
-**Dataset Used for Fine-Tuning:** AffectNet  
-**Accuracy:**  
 
-- enet_b0_8_best_vgaf.pt: 61.32% (8 classes), 64.57% (7 classes)  
-- enet_b2_8.pt: 63.03% (8 classes), 66.29% (7 classes)  
+HSEmotionONNX is a collection of ONNX-compatible models designed for efficient and accurate facial emotion recognition, developed by Andrey Savchenko during his research at HSE University and Sber AI Lab [@savchenko2023facial]. These models were initially pre-trained on the VGGFace2 dataset for face identification and later fine-tuned on AffectNet, achieving state-of-the-art performance in recognizing both categorical emotions and valence-arousal dimensions.
 
-**Inference Times:**  
+The library supports multiple lightweight models, including variations of EfficientNet, which balance accuracy and computational efficiency. Notably, the **enet_b0_8_best_vgaf** model demonstrates robust performance with accuracies of 61.32% for 8 emotion classes and 64.57% for 7 classes, with an average inference time of 59 \u00b1 26 ms and a model size of 16 MB. Similarly, the **enet_b2_8** model achieves higher accuracy (63.03% for 8 classes and 66.29% for 7 classes) but at the cost of increased computational demand, requiring 191 \u00b1 18 ms per inference and occupying 30 MB of memory.
 
-- enet_b0_8_best_vgaf.pt: 59 $\pm$ 26 ms  
-- enet_b2_8.pt: 191 $\pm$ 18 ms  
+These models excel in scenarios requiring real-time emotion recognition on resource-constrained devices, such as mobile platforms and edge computing environments. Their efficiency is further enhanced by leveraging ONNX's cross-platform compatibility, allowing deployment across various frameworks and devices. The preferred model, **enet_b0_8_best_vgaf**, offers an optimal trade-off between speed and accuracy, making it suitable for applications where high frame rates and responsiveness are critical.
 
-**Model Sizes:**
-
-- enet_b0_8_best_vgaf.pt: 16 MB
-- enet_b2_8.pt: 30 MB
-
-The enet_b0_8_best_vgaf model is preferred due to its faster inference time, achieving higher FPS with minimal accuracy trade-offs.
+HSEmotionONNX also provides tools for analyzing emotions at the batch level, supporting applications like video-level emotion tracking and multi-user affective computing. The library's flexibility, combined with its high performance, makes it a powerful tool for advancing research and development in emotion recognition technologies.
 
 ### 4.2.3. Vision Transformer (ViT) for Facial Expression Recognition  
-**Description:** [@todor_pakov_2024] A Vision Transformer model fine-tuned (from [vit-base-patch16-224-in21k](https://huggingface.co/google/vit-base-patch16-224-in21k)) for emotion recognition on facial images.  
-**Dataset Used for Fine-Tuning:** FER2013  
-**Accuracy:**  
+The Vision Transformer (ViT) for Facial Expression Recognition is a cutting-edge model fine-tuned on the FER2013 dataset for the task of emotion recognition [@todor_pakov_2024]. It leverages the **vit-base-patch16-224-in21k** architecture, a pre-trained Vision Transformer initially trained on ImageNet and adapted for facial emotion classification. The model achieves notable accuracies of **71.13% on the validation set** and **71.16% on the test set**, demonstrating its effectiveness in recognizing seven discrete emotion categories: Angry, Disgust, Fear, Happy, Sad, Surprise, and Neutral.
 
-- Validation Set: 71.13%  
-- Test Set: 71.16%  
+The ViT model processes input images by splitting them into fixed-sized patches. These patches undergo an embedding phase initiated by a convolutional layer with a 16x16 kernel and a stride of 16x16. The resulting embeddings are then enriched with positional embeddings and projected into a 768-dimensional feature space. This sequence of embedded patches is processed through 11 Transformer Encoder layers, allowing the model to capture complex spatial relationships within the images. For the emotion classification task, the final output layer is a fully connected linear layer with eight dimensions, corresponding to the emotional categories.
+
+To prepare the images for input into the model, several preprocessing steps are applied:
+
+- **Resizing:** Images are resized to match the input dimensions expected by the model.
+- **Normalization:** Pixel values are scaled to a specific range to ensure consistency.
+- **Data Augmentation:** Random transformations, such as rotations, flips, and zooms, are applied during training to increase dataset variability and improve model generalization.
+
+While the ViT model demonstrates strong performance, its accuracy is subject to the quality and diversity of the FER2013 dataset. The dataset's inherent biases and limited variability may influence the model's ability to generalize effectively to unseen data. Future enhancements could include training on more diverse datasets or incorporating additional data augmentation techniques.
+
+The Vision Transformer architecture’s ability to leverage global attention mechanisms within images positions it as a promising approach for emotion recognition, combining state-of-the-art performance with a scalable design.
 
 ### 4.2.4. Residual Masking Network (RMN)  
-**Description:** RMN [@pham2021facial] leverages Residual Masking Blocks to process facial features across multiple scales, ending with a 7-class softmax for emotion classification.  
-**Dataset Used:** FER2013  
-**Accuracy:** 74.14%  
+
+The **Residual Masking Network (RMN)** [@pham2021facial] is a state-of-the-art deep learning model designed for facial expression recognition, utilizing **Residual Masking Blocks** to enhance the extraction of critical multi-scale facial features. This innovative architecture processes features hierarchically, emphasizing the most relevant regions of the face while suppressing irrelevant or noisy data. The model concludes with a softmax layer to classify facial expressions into seven distinct categories: Angry, Disgust, Fear, Happy, Sad, Surprise, and Neutral.
+
+Fine-tuned on the **FER2013 dataset**, the RMN achieves an impressive accuracy of **74.14%**, outperforming several widely recognized architectures such as VGG19 and ResNet34. Its advanced feature masking mechanism ensures robust performance even under challenging conditions, such as low-resolution images or diverse facial poses.
+
+RMN’s design makes it both efficient and versatile, supporting applications in static image analysis and real-time video emotion recognition. Pre-trained weights are readily available, allowing seamless integration into various projects without the need for extensive training. The model is particularly well-suited for use in fields such as human-computer interaction, adaptive interfaces, and behavioral analysis, where accurate and efficient emotion recognition is crucial.
 
 ### 4.2.5. EmoNet  
-**Description:** [@toisoul2021estimation] Trained models available for 5 and 8 emotional classes, also predicting valence, arousal, and facial landmarks.  
-**Dataset Used:** AffectNet 
 
-**Accuracy:**  
+**EmoNet** [@toisoul2021estimation] is a sophisticated model designed for both discrete and continuous emotion recognition, capable of predicting categorical emotions alongside valence and arousal levels. The model offers two configurations: one for **5 emotional classes** and another for **8 classes**, with accuracies of **82%** and **75%** respectively when evaluated on the AffectNet dataset. Additionally, EmoNet predicts facial landmarks, enriching its analysis capabilities for real-world applications.
 
-- 5 Classes: 82%  
-- 8 Classes: 75%  
+Trained on the **AffectNet dataset**, EmoNet is optimized for naturalistic conditions, where facial expressions may vary significantly due to environmental factors or individual differences. The model’s predictions include:
+- **Discrete Emotions:** Categories such as Neutral, Happy, Sad, Surprise, Fear, Disgust, Anger, and Contempt (for the 8-class model).
+- **Valence and Arousal:** Continuous measures indicating emotional intensity and activation levels, respectively.
 
-**Face Detection:** Utilizes the SFD detector from the [face-alignment](https://github.com/1adrianb/face-alignment) repository, noted for its high accuracy but slower performance.  
+The model employs the **SFD detector** from the [face-alignment repository](https://github.com/1adrianb/face-alignment) for facial feature localization. Although this detector ensures high accuracy, it operates at relatively slower speeds compared to other detection methods. EmoNet’s architecture integrates deep learning techniques to achieve robust performance across diverse facial expressions, making it suitable for applications in affective computing and emotion-aware systems.
+
+EmoNet provides tools for analyzing static images and video streams, supporting dynamic emotion recognition in real-time scenarios. Its dual focus on discrete and continuous emotion analysis allows for a comprehensive understanding of human affect, enabling its use in fields such as psychology, human-computer interaction, and entertainment.
+
+\newpage
+## 4.3. Summary of Models
+
+| Model                          | Dataset    | Number of Classes | Valence/Arousal | Accuracy       |
+|--------------------------------|------------|-------------------|-----------------|----------------|
+| DeepFace                       | FER2013    | 7                 | No              | 57.42%         |
+| HSEmotionONNX (16 Mb)          | AffectNet  | 7                 | No              | 64.57%         |
+| HSEmotionONNX (16 Mb)          | AffectNet  | 8                 | No              | 61.32%         |
+| HSEmotionONNX (30 Mb)          | AffectNet  | 7                 | No              | 66.29%         |
+| HSEmotionONNX (30 Mb)          | AffectNet  | 8                 | No              | 63.03%         |
+| Vision Transformer             | FER2013    | 7                 | No              | 71.16%         |
+| Residual Masking Network       | FER2013    | 7                 | No              | 74.14%         |
+| EmoNet                         | AffectNet  | 5                 | Yes             | 82%            |
+| EmoNet                         | AffectNet  | 8                 | Yes             | 75%            |
 
 \newpage
 
 # 5. Prototype and Demo Set-up
 
+This section aims at providing a detailed overview of the prototype setup and configuration for the MoodPilot project. It includes the hardware specifications, software environment, and deployment strategies for the Facial Emotion Recognition (FER) models on edge devices. The Raspberry Pi 3B+ serves as the primary edge device for running the FER models, with a focus on real-time performance and resource efficiency.
+Moreover, an overview over the data collection system and the frontend and backend components is provided, showcasing the system's architecture and functionality.
+
 ## 5.1. Raspberry Pi 3B+ Configuration
 
-<!-- Gio -->
+The edge device used during the prototype phase to run the FD (Face Detection) and FER (Facial Expression Recognition) models is the [Raspberry Pi 3B+](https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/). Below, the hardware specifications and setup details are provided.
 
-## 5.2. Data Collection System
+### 5.1.1. Raspberry Pi 3 Model B+
+The Raspberry Pi 3 Model B+ is a third-generation single-board computer, featuring:
+
+- **Processor**: 1.4GHz 64-bit quad-core Broadcom BCM2837B0, Cortex-A53 (ARMv8) SoC.
+- **Memory**: 1GB LPDDR2 SDRAM.
+- **Wireless Connectivity**: Dual-band 2.4GHz and 5GHz IEEE 802.11.b/g/n/ac wireless LAN, Bluetooth 4.2/BLE.
+- **Ethernet**: Gigabit Ethernet over USB 2.0, with a maximum throughput of 300 Mbps.
+- **GPIO**: Extended 40-pin GPIO header.
+- **Camera Support**: CSI camera port for connecting a Raspberry Pi camera.
+- **Power Input**: 5V/2.5A DC power input.
+
+### 5.1.2. Camera Module
+For real-time detection, the [Raspberry Pi Camera Module 2](https://www.raspberrypi.com/products/camera-module-v2/) (v2.1) was used. The module includes:
+
+- **Sensor**: Sony IMX219, 8-megapixel sensor.
+- **Capabilities**:
+  - High-definition video recording: 1080p30, 720p60, VGA90 video modes.
+  - Still image capture.
+- **Connection**: Attaches via a 15cm ribbon cable to the CSI port on the Raspberry Pi.
+- **Software Support**: Numerous third-party libraries are available, including the Picamera Python library. Refer to the "Getting Started with Picamera" resource for additional guidance.
+
+### 5.1.3. Operating System Setup
+The operating system was installed on a 128GB SanDisk Ultra microSD card with speeds up to 140MB/s. The [Raspberry Pi Imager](https://www.raspberrypi.com/software/) was used to install the following version:
+
+- **OS Version**: Raspberry Pi OS with desktop.
+- **Release Date**: November 19th, 2024.
+- **System**: 64-bit.
+- **Kernel Version**: 6.6.
+- **Debian Version**: 12 (Bookworm).
+- **Image Size**: 1,179MB.
+
+To verify system details, use the command:
+```bash
+uname -a
+```
+
+Sample output:
+```txt
+Linux raspberrypi 6.6.62+rpt-rpi-v8 #1 SMP PREEMPT Debian 1:6.6.62-1+rpt1 (2024-11-25) aarch64 GNU/Linux
+```
+
+### 5.1.4. Python Environment and Dependencies
+The installed Python version is 3.11.2. To deploy the system, all required dependencies can be installed automatically using the following command from the root of the project:
+```bash
+pip install -r requirements_raspberrypi.txt
+```
+For testing models on a laptop, a separate `requirements.txt` file is available to install the necessary dependencies.
+
+## 5.2. Raspberry Pi 3B+ Demo
+
+For the deployment on the Raspberry Pi, which differs from deployment on a basic notebook used for testing purposes, adjustments were required due to compatibility issues. On the notebook, OpenCV was utilized for both camera input and frame processing. However, with the Raspberry Pi 3B+ running the latest Raspberry Pi OS, OpenCV alone could not interface with the Picamera module. Additionally, the older Python Picamera library was incompatible with the newer OS version. After extensive testing and troubleshooting, the following configuration was successfully implemented.
+
+### 5.2.1. Camera Integration
+The new `picamera2` library was employed for capturing frames from the Picamera module. Using the `Picamera2` class, an instance was created to capture a frame, which was subsequently processed using OpenCV for resizing and overlaying information for real-time preview. To verify the camera configuration with real-time preview, execute the following command from the root of the project:
+
+```bash
+python3 Prototype/FER/camera.py
+```
+
+This command opens an OpenCV window titled "Camera Preview," displaying real-time frames captured by the camera, as shown in \autoref{fig:picamera_preview}. To exit the preview, press "q" while the window is focused or simply close the window.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{Resources/picamera_preview.png}
+    \caption{Real-time camera preview using the Picamera module on the Raspberry Pi 3B+.}
+    \label{fig:picamera_preview}
+\end{figure} 
+
+### 5.2.2. Emotion Detection Deployment
+For the emotion detection system on the Raspberry Pi 3B+, the "HSEmotion_Onnx" FER model was selected, paired with HAAR Cascade for face detection. This decision was based on the limited computational power of the Raspberry Pi 3B+ and the unavailability of a Neural Compute Stick 2 (NCS2) accelerator. The specific implementation is in the `Prototype/FER/Models/HSEmotionONNX/hsemotion_onnx.py` file.
+
+To explore the script’s options, use:
+
+```bash
+cd Prototype/FER/Models/HSEmotionONNX/
+```
+
+```bash
+python3 hsemotion_onnx.py --help
+```
+
+#### 5.2.2.1. Usage
+```text
+usage: hsemotion_onnx.py [-h] [--video VIDEO] [--no-preview]
+
+HSEmotionONNX: Real-time facial emotion recognition.
+
+options:
+  -h, --help     show this help message and exit
+  --video VIDEO  Path to video file or 'camera' for live feed.
+  --no-preview   Disable video preview during processing.
+```
+
+- **Video Input**: By default, or when `--video camera` is specified, the Picamera feed serves as input. Alternatively, a stored video can be provided.
+- **Preview Mode**: The `--no-preview` option disables the real-time video preview to save FPS, aligning with the final deployment scenario where passengers will not view the preview during the trip.
+
+To run the model with the default settings:
+
+```bash
+python3 hsemotion_onnx.py
+```
+
+### 5.2.3. Output Examples
+The camera feed and preview window display real-time emotion detection. Sample outputs include:
+
+- \autoref{fig:neutral_emotion}
+- \autoref{fig:happiness_emotion}
+- \autoref{fig:surprise_emotion}
+- \autoref{fig:disgust_emotion}
+
+\begin{figure}[p]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Resources/hsemotion_onnx-preview-neutral.png}
+        \caption{Detection of a neutral facial expression.}
+        \label{fig:neutral_emotion}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Resources/hsemotion_onnx-preview-happiness.png}
+        \caption{Detection of a happy facial expression.}
+        \label{fig:happiness_emotion}
+    \end{subfigure}
+
+    \vspace{1em} % Spacing between rows
+
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Resources/hsemotion_onnx-preview-surprise.png}
+        \caption{Detection of a surprised facial expression.}
+        \label{fig:surprise_emotion}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Resources/hsemotion_onnx-preview-disgust.png}
+        \caption{Detection of a disgusted facial expression.}
+        \label{fig:disgust_emotion}
+    \end{subfigure}
+
+    \caption{Real-time emotion detection using the HSEmotionONNX model. The figures depict successful detection of neutral, happiness, surprise, and disgust emotions.}
+    \label{fig:emotion_detection}
+\end{figure}
+
+
+
+Each image illustrates successful detection of respective emotions (neutral, happiness, surprise, and disgust). To exit, press "q" or use `CTRL+C`. Graceful termination is implemented via a signal handler for SIGINT, ensuring proper program termination.
+
+### 5.2.4. Performance Metrics
+The FPS during execution highlights the computational limitations of the Raspberry Pi 3B+:
+
+- **With Preview**: 0.50 FPS (\autoref{fig:hsemotion_onnx-preview-fps})
+- **Without Preview**: 0.87 FPS (\autoref{fig:hsemotion_onnx-nopreview-fps})
+
+\begin{figure}[p]
+    \centering
+    \begin{subfigure}{\textwidth}
+        \centering
+        \includegraphics[width=0.5\textwidth]{Resources/hsemotion_onnx-preview-fps.png}
+        \caption{FPS during emotion detection with video preview enabled.}
+        \label{fig:hsemotion_onnx-preview-fps}
+    \end{subfigure}
+
+    \vspace{1em} % Spacing between images
+
+    \begin{subfigure}{\textwidth}
+        \centering
+        \includegraphics[width=0.5\textwidth]{Resources/hsemotion_onnx-nopreview-fps.png}
+        \caption{FPS during emotion detection without video preview.}
+        \label{fig:hsemotion_onnx-nopreview-fps}
+    \end{subfigure}
+
+    \caption{Frames per second (FPS) during emotion detection using the HSEmotionONNX model on the Raspberry Pi 3B+.}
+    \label{fig:fps_comparison}
+\end{figure}
+
+Modifica in modo tale che le imagini siano affiancate a coppie
+
+### 5.2.5. Logging
+All detected emotions, along with timestamps, are logged in the 
+
+```txt
+Prototype/FER/Models/HSEmotionONNX/logs/
+``` 
+
+folder. A unique log file is created for each execution, with average FPS appended at the end.
+
+### 5.2.6. Recommendations
+Although the processed FPS is low (more than one second per frame), the successful deployment demonstrates the capability of integrating modern Python (3.11) and software tools on the dated Raspberry Pi 3B+. For practical applications, upgrading to a more powerful edge device is recommended to enhance performance. Future work includes testing this deployment on newer Raspberry Pi models to evaluate potential improvements in real-time emotion detection, enabling the "MoodPilot" system to assess passenger moods during trips.
+
+\newpage
+## 5.3. Data Collection System
 
 \newpage
 
