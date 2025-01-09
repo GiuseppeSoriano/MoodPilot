@@ -91,9 +91,32 @@ How to write the project documentation (prototype document)
 
 \pagenumbering{gobble}
 
+\newpage
+\begin{titlepage}
+    \thispagestyle{empty} % Disabilita la numerazione della pagina
+    \begin{center}
+        \vspace*{\fill} % Aggiunge spazio verticale per centrare il contenuto
+        \LARGE\textbf{Abstract} % Titolo centrato
+        \vspace{0.5cm} % Spaziatura tra il titolo e il testo
+
+        \normalsize % Dimensione del testo normale
+        \begin{minipage}{0.9\textwidth} % Imposta la larghezza del blocco di testo
+            \centering % Centra il testo all'interno del blocco
+            In this study, we present a system for evaluating user satisfaction with autonomous and manual driving experiences through Facial Emotion Recognition (FER). A detailed analysis was conducted to identify and benchmark state-of-the-art FER models, including DeepFace, EmoNet, HSEmotionONNX, RMN, and Vision Transformer (ViT), with additional tests performed on a Raspberry Pi 3B+ as a reference for potential car controller deployment. Alongside this analysis, we developed a frontend and backend system to facilitate data collection for future training of a predictive model. The system allows users to manually respond to a form and undergo video-based analysis of their driving experience. The ultimate goal is to train a model that can autonomously infer user responses based on collected data, paving the way for an adaptive system to evaluate driving satisfaction efficiently.
+        \end{minipage}
+
+        \vspace*{\fill} % Completa la centratura verticale
+    \end{center}
+\end{titlepage}
+
+\clearpage
+
+\newpage
+
+\pagenumbering{gobble}
+
 \renewcommand*\contentsname{Index}
 \tableofcontents
-
 
 \newpage
 
@@ -101,47 +124,51 @@ How to write the project documentation (prototype document)
 
 
 <!-- Provare a mettere l'abstract direttamente nel frontespizio in piccolo -->
-# 1. Abstract
-
 \newpage
 
 
-# 2. Theoretical Background on Emotions
+# 1. Introduction
 
+Emotions play a fundamental role in shaping human cognition, behavior, and decision-making. They influence how individuals perceive and interact with their surroundings, making them critical in contexts that require human-machine interaction. Recent advancements in technology have enabled the integration of emotion recognition into various applications, ranging from healthcare to social robotics.
 
-Emotions are complex psychological states that encompass subjective experiences, physiological responses, and behavioral expressions. They significantly influence human cognition and social interactions, affecting decision-making, perception, and relationships.
+In the automotive domain, emotions are particularly relevant for assessing user satisfaction in different driving modes, such as autonomous driving and manual control. Our system aims to provide an innovative service that evaluates passenger experiences automatically, based on their perceived emotions. This service can be utilized by companies offering ride-hailing and driving services, enabling them to assess the quality of drivers or autonomous driving systems and improve customer satisfaction. By analyzing passengers’ emotional states during a ride, the system delivers insights that help identify strengths and areas for improvement, fostering better service quality and user trust.
 
-## 2.1. Emotion Classifications
+Facial Emotion Recognition (FER) emerges as a key technology in this context. By analyzing facial expressions, FER systems infer users’ emotional states in real-time, providing an objective evaluation of their experiences. This capability is especially valuable in ride-hailing services, where customer feedback is essential for evaluating and enhancing driving performance.
 
-Various models have been developed to categorize emotions:
+However, implementing FER in constrained environments like in-car systems poses unique challenges. Factors such as limited computational resources, varying environmental conditions (e.g., lighting, seating positions), and privacy concerns must be addressed to create effective solutions. This study investigates these challenges, building the foundation for a system that leverages FER to improve passenger satisfaction and trust in driving technologies.
 
-- **Discrete Emotion Theory**: This theory suggests that humans possess a set of basic emotions that are universally recognizable. Paul Ekman's research identified six fundamental emotions: anger, disgust, fear, happiness, sadness, and surprise. Each is associated with distinct facial expressions and physiological patterns [@WikipediaEmotionClassification].
+## 1.1. Emotion Recognition: Applications and Challenges
 
-- **Dimensional Models**: These models represent emotions along *continuous* dimensions rather than discrete categories. The *Circumplex Model* is a prominent example, organizing emotions within a circular space defined by two axes: *valence* and *arousal* [@Murphy2024].
+Emotions are complex psychological states that encompass subjective experiences, physiological responses, and behavioral expressions. They play a crucial role in shaping human cognition, influencing decision-making, perception, and social interactions. Understanding and categorizing emotions has been a focus of psychological research, leading to the development of various theoretical models. These frameworks have laid the foundation for technologies like Facial Emotion Recognition (FER), which aim to interpret emotions from observable cues such as facial expressions.
 
+### 1.1.1. Emotion Classifications
 
-## 2.2. Discrete Emotion Theory: Roots, Universality, and Significance
+Two major models dominate the study of emotion categorization:
 
-Discrete Emotion Theory posits that humans experience a set of fundamental emotions, each with distinct characteristics and evolutionary purposes. This theory has its roots in Charles Darwin's work on the expression of emotions, where he argued that emotions serve adaptive functions for survival. Paul Ekman's modern research built on this foundation, identifying six core emotions—anger, disgust, fear, happiness, sadness, and surprise—through cross-cultural studies [@WikipediaEmotionClassification].
+- **Discrete Emotion Theory**: This theory suggests that humans experience a set of universal, basic emotions. Pioneered by Paul Ekman, research has identified six fundamental emotions—anger, disgust, fear, happiness, sadness, and surprise—each linked to distinct facial expressions and physiological responses. These emotions are universally recognizable across cultures, supporting the notion of a biological basis for emotional expression [@WikipediaEmotionClassification].  
 
-### 2.2.1. Characteristics of Basic Emotions
+- **Dimensional Models**: These models conceptualize emotions as points within a continuous space rather than discrete categories. One prominent example is the *Circumplex Model*, proposed by James Russell, which organizes emotions along two axes:  
+  - **Valence**: The positivity or negativity of an emotion (e.g., happiness is positive, sadness is negative).  
+  - **Arousal**: The intensity or activation level of an emotion (e.g., excitement is high-arousal, calmness is low-arousal) [@Murphy2024].  
 
-Each of the six core emotions has distinguishing features:
+These frameworks provide structured ways to interpret and classify emotions, offering significant utility for applications like FER in automotive contexts.
 
-- **Anger**: Triggered by perceived threats or injustices, anger is characterized by increased arousal, narrowed attention, and physiological changes such as increased heart rate and adrenaline release.
-- **Disgust**: Often a response to contaminants or morally offensive behavior, disgust manifests through a distinctive facial expression involving nose wrinkling and lip curling.
-- **Fear**: A reaction to danger or threat, fear prompts the fight-or-flight response, enhancing focus and physiological readiness.
-- **Happiness**: Associated with positive experiences and satisfaction, happiness is expressed through smiles and other outward signs of well-being.
-- **Sadness**: Elicited by loss or disappointment, sadness is marked by lowered energy and slower cognitive processes.
-- **Surprise**: Triggered by unexpected events, surprise is characterized by widened eyes and raised eyebrows, facilitating rapid information processing.
+### 1.1.2. Discrete Emotion Theory: Universality and Characteristics
 
-### 2.2.2. Facial Expression Recognition and Universality
+The Discrete Emotion Theory, rooted in Charles Darwin's work, posits that emotions have evolutionary purposes, aiding survival and adaptation. Ekman’s cross-cultural studies confirmed the universality of six basic emotions, which are recognized and expressed consistently across populations.  
+
+Each of these basic emotions has unique characteristics:  
+
+- **Anger**: Associated with perceived threats or injustices, marked by physiological arousal and narrowed focus.  
+- **Disgust**: Often a response to harmful or offensive stimuli, with distinct facial cues like nose wrinkling.  
+- **Fear**: Triggers the fight-or-flight response, enhancing focus and readiness for action.  
+- **Happiness**: Signifies satisfaction and well-being, expressed through smiles and other positive indicators.  
+- **Sadness**: Linked to loss or disappointment, characterized by lowered energy.  
+- **Surprise**: Prompted by unexpected events, facilitating rapid attention shifts with widened eyes and raised eyebrows.
 
 Ekman’s studies demonstrated that these emotions are universally recognized through facial expressions, even in cultures isolated from global influences. For instance, widened eyes and raised eyebrows universally signal surprise, while smiles denote happiness. This universality suggests a biological basis for basic emotions, enabling effective nonverbal communication.
 
-
-
-## 2.3. The Circumplex Model: Valence and Arousal
+### 1.1.3. The Circumplex Model: Valence and Arousal
 
 Developed by James Russell, the Circumplex Model (depicted in Figure \ref{fig:circumplex_model}) maps emotions based on two dimensions:
 
@@ -160,31 +187,79 @@ These models are vital for fields like Facial Expression Recognition (FER), as t
     \label{fig:circumplex_model}
 \end{figure} 
 
+### 1.1.4. Challenges in Emotion Recognition
+
+While these models provide robust theoretical foundations, implementing FER in real-world automotive settings introduces several challenges:  
+
+- **Environmental Variability**: In-car lighting and passenger positioning can degrade facial analysis quality.  
+- **Computational Constraints**: Many FER systems must operate on low-power devices like Raspberry Pi 3, balancing accuracy and efficiency.  
+- **Privacy Concerns**: FER systems must address ethical issues surrounding the collection and processing of sensitive facial data.
+
+By leveraging these emotion classification models, this study explores the feasibility of FER for evaluating passenger satisfaction and improving user trust in ride-hailing and autonomous driving technologies.
+
+## 1.2. Scope of the Study
+
+This study aims to explore the potential of Facial Emotion Recognition (FER) in evaluating passenger experiences during driving scenarios, with the ultimate goal of improving user satisfaction and trust in ride-hailing and autonomous driving services. To achieve this, the project focuses on the following key objectives:
+
+- **Benchmarking State-of-the-Art FER Models**
+A comprehensive analysis of FER models is conducted to evaluate their performance and suitability for deployment in automotive contexts. The models under investigation include DeepFace, EmoNet, HSEmotionONNX, RMN, and Vision Transformer (ViT). Each model is assessed for its accuracy, robustness, and efficiency, particularly in constrained environments.
+- **Adaptation for Edge Devices**
+The feasibility of deploying FER models on low-power devices, such as the Raspberry Pi 3, is explored. This device serves as a reference for potential car controllers, where computational resources are limited, and real-time processing is essential.
+- **Development of a Data Collection System**
+A dual-component system, comprising frontend and backend modules, was developed to facilitate the collection of data from passengers. Users are asked to complete a form about their driving experience, while facial expressions are recorded during the ride. This dataset serves as a foundation for training predictive models.
+- **Future Model Training**
+The collected data will be used to train a model capable of autonomously responding to form questions based on passengers’ inferred emotions. This development aims to bridge the gap between user feedback and adaptive driving systems, enabling real-time evaluation and adjustments.
+- **Addressing Key Challenges**
+The study addresses challenges such as computational constraints and privacy concerns. These considerations ensure that the developed system is not only effective but also applicable in real-world scenarios.
+
+By integrating these objectives, the study provides a solid foundation for emotion-aware automotive systems. 
 
 \newpage
 
-# 3. Facial Expression Recognition (FER)
+# 2. State of the Art
 
-## 3.1. Datasets
+## 2.1. Bidirectional Feedback Limitations in Ride-Hailing Services
+
+## 2.2. Facial Emotion Recognition (FER) in Automotive Contexts
+
+## 2.3. Facial Emotion Recognition (FER) on Edge Devices
+
+In "Using emotion recognition and temporary mobile social network in on-board services for car passengers" [@10.1007/978-3-031-37470-8_7], the authors evaluate the deployment of facial emotion recognition (FER) systems on Raspberry Pi 4 B devices, showcasing the potential for real-time emotion detection in edge-based applications. The study focuses on leveraging edge computing to address the limitations of cloud-based solutions, such as privacy concerns, reliance on connectivity, and the complexity of maintaining connected infrastructures. The proposed system architecture includes a face detection (FD) module to locate and extract faces from input images, followed by a FER module to classify emotions. 
+
+Several FD algorithms were initially explored using frameworks like OpenCV and Darknet. OpenCV’s Haar Cascade and Improved Local Binary Patterns (ILBP) were evaluated for their execution time, but ultimately Yoloface-500k v2, a lightweight model based on YOLOv3, was chosen for its superior balance of accuracy and performance. For the FER module, two models were tested: DeepFace, a lightweight Python library capable of running directly on the Raspberry Pi, and Emonet, which required the use of a Neural Compute Stick 2 (NCS2) accelerator due to its higher computational demand.
+
+Two versions of the system were developed. The first integrated both the FD and DeepFace FER models on the Raspberry Pi, providing efficient performance suitable for real-time applications. The second utilized Yoloface for FD on the Raspberry Pi and offloaded the FER task to the NCS2 accelerator for running Emonet. Since Emonet took over 10 seconds per frame on the Raspberry Pi alone, the use of the NCS2 significantly improved processing time. Additional optimizations, such as asynchronous pipelining, further reduced latency by overlapping face detection and emotion recognition tasks for successive frames.
+
+The study concludes that systems leveraging lightweight FD models like Yoloface-500k v2 and supported by accelerators such as the NCS2 can enable real-time FER even on resource-constrained edge devices. This approach highlights the feasibility of deploying FER for privacy-sensitive applications, including automotive environments, where the system can adapt services dynamically based on detected user moods.
+
+\newpage
+
+# 3. System Description
+
+\newpage
+
+# 4. Facial Expression Recognition (FER) Performance Analysis
+
+## 4.1. Datasets
 
 The datasets described here will be referenced later in the Models section to indicate their use in training and evaluating the models. Below is a summary of the datasets:
 
-### 3.1.1. FER2013  
+### 4.1.1. FER2013  
 [@FER2013] is a dataset comprising 32,298 grayscale images of faces, each sized 48x48 pixels, labeled with seven emotions: Angry (0), Disgust (1), Fear (2), Happy (3), Sad (4), Surprise (5), and Neutral (6). Images are centered and uniformly scaled. The dataset includes 28,709 training samples and 3,589 test samples, with the task being to classify facial expressions into one of the seven categories.
 
-### 3.1.2. AffectNet  
+### 4.1.2. AffectNet  
 [@AffectNet] addresses the scarcity of annotated facial expression datasets in the wild, particularly for the **continuous dimensional model** (e.g., valence and arousal) alongside **discrete emotions** (categorical model). It contains over 1 million facial images collected from the internet using 1,250 emotion-related keywords in six languages. Approximately 440,000 images were manually annotated for eight discrete emotions and valence/arousal intensity. The dataset also includes "contempt" as an eighth emotion, making it more comprehensive than FER2013. AffectNet facilitates research in both categorical and dimensional emotion models.
 
 <!-- Migliorare il formato in cui vengono presentati i diversi modelli che non mi piace molto... specialmente in termini grafici nel pdf finale. -->
-## 3.2. Models
+## 4.2. Models
 This section introduces several models for Facial Expression Recognition (FER). Each model is presented with a brief description, the dataset it utilizes (if not otherwise specified, for both training and testing), and its performance metrics on that dataset.
 
-### 3.2.1. DeepFace  
+### 4.2.1. DeepFace  
 **Description:** DeepFace [@DeepFace], [@serengil2021lightface] is a lightweight Python framework for face recognition and facial attribute analysis, including emotion detection, age, gender, and ethnicity prediction. It integrates various state-of-the-art models such as VGG-Face, FaceNet, and ArcFace.  
 **Dataset Used:** FER2013  
 **Accuracy:** 57.42%
 
-### 3.2.2. HSEmotionONNX  
+### 4.2.2. HSEmotionONNX  
 **Description:** [@savchenko2023facial], [@savchenko2021facial], [@Savchenko_2022_CVPRW], [@Savchenko_2022_ECCVW], [@savchenko2022classifying] A collection of ONNX-compatible (Open Neural Network Exchange standard) models *pre-trained* for face identification using [VGGFace2](https://github.com/ox-vgg/vgg_face2) (Dataset for Face Recognition) and optimized for emotion recognition on AffectNet.  
 **Dataset Used for Fine-Tuning:** AffectNet  
 **Accuracy:**  
@@ -204,7 +279,7 @@ This section introduces several models for Facial Expression Recognition (FER). 
 
 The enet_b0_8_best_vgaf model is preferred due to its faster inference time, achieving higher FPS with minimal accuracy trade-offs.
 
-### 3.2.3. Vision Transformer (ViT) for Facial Expression Recognition  
+### 4.2.3. Vision Transformer (ViT) for Facial Expression Recognition  
 **Description:** [@todor_pakov_2024] A Vision Transformer model fine-tuned (from [vit-base-patch16-224-in21k](https://huggingface.co/google/vit-base-patch16-224-in21k)) for emotion recognition on facial images.  
 **Dataset Used for Fine-Tuning:** FER2013  
 **Accuracy:**  
@@ -212,12 +287,12 @@ The enet_b0_8_best_vgaf model is preferred due to its faster inference time, ach
 - Validation Set: 71.13%  
 - Test Set: 71.16%  
 
-### 3.2.4. Residual Masking Network (RMN)  
+### 4.2.4. Residual Masking Network (RMN)  
 **Description:** RMN [@pham2021facial] leverages Residual Masking Blocks to process facial features across multiple scales, ending with a 7-class softmax for emotion classification.  
 **Dataset Used:** FER2013  
 **Accuracy:** 74.14%  
 
-### 3.2.5. EmoNet  
+### 4.2.5. EmoNet  
 **Description:** [@toisoul2021estimation] Trained models available for 5 and 8 emotional classes, also predicting valence, arousal, and facial landmarks.  
 **Dataset Used:** AffectNet 
 
@@ -228,9 +303,24 @@ The enet_b0_8_best_vgaf model is preferred due to its faster inference time, ach
 
 **Face Detection:** Utilizes the SFD detector from the [face-alignment](https://github.com/1adrianb/face-alignment) repository, noted for its high accuracy but slower performance.  
 
+\newpage
+
+# 5. Prototype and Demo Set-up
+
+## 5.1. Raspberry Pi 3B+ Configuration
+
+<!-- Gio -->
+
+## 5.2. Data Collection System
 
 \newpage
 
-# 4. References
+# 6. Conclusion
+
+\newpage
+\thispagestyle{empty}
+\pagenumbering{gobble}
+
+# References
 
 <div id="refs"></div>
