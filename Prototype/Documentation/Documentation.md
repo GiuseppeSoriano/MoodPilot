@@ -262,7 +262,7 @@ The study concludes that systems leveraging lightweight FD models like Yoloface-
 
 # 3. System Description
 
-The system architecture for the MoodPilot project is designed to seamlessly integrate data collection, processing, and user interaction across its components. The following describes the main components of the system:
+The system architecture for the MoodPilot project (depicted in \autoref{fig:system_architecture}) is designed to seamlessly integrate data collection, processing, and user interaction across its components. The following describes the main components of the system:
 
 **Database:**
 The system utilizes MongoDB as the primary database to store structured and unstructured data. This includes user data, ride logs, emotional feedback, and FER (Facial Expression Recognition) model outputs. MongoDB’s flexibility and scalability ensure efficient handling of data streams and support for real-time updates.
@@ -295,13 +295,13 @@ The system incorporates robust security measures to protect user data and mainta
 - Anonymization of sensitive passenger data during FER processing.
 - Regular audits and compliance with data protection regulations.
 
-Overall, the system is built with scalability and modularity in mind, allowing for future extensions, such as integrating additional sensors, re1fining FER models for enhanced performance, or supporting advanced analytics and reporting tools.
+Overall, the system is built with scalability and modularity in mind, allowing for future extensions, such as integrating additional sensors, refining FER models for enhanced performance, or supporting advanced analytics and reporting tools.
 
 \newpage
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.8\textwidth]{Resources/system_architecture.png}
-    \caption{System Architecture}
+    \caption{MoodPilot System Architecture.} 
     \label{fig:system_architecture}
 \end{figure} 
 
@@ -493,7 +493,7 @@ This command opens an OpenCV window titled "Camera Preview," displaying real-tim
 \begin{figure}
     \centering
     \includegraphics[width=0.5\textwidth]{Resources/picamera_preview.png}
-    \caption{Real-time camera preview using the Picamera2 module on the Raspberry Pi 3B+.}
+    \caption{Real-time camera preview using the Picamera module on the Raspberry Pi 3B+.}
     \label{fig:picamera_preview}
 \end{figure} 
 
@@ -713,7 +713,7 @@ The backend system is designed to facilitate emotion recognition and analysis fr
 
 ### 5.3.2. Frontend
 
-The frontend of the feedback system is designed to collect user input on their ride experience, process the data, and send it to the backend for further analysis. 
+The frontend of the feedback system is responsible for gathering user input regarding their ride experience. It processes this data and transmits it to the backend for further analysis. The web application interface is displayed in \autoref{fig:frontend}.
 
 #### Components and Features
 
@@ -762,11 +762,10 @@ The frontend of the feedback system is designed to collect user input on their r
 - **File Upload Limits:**
   Ensure that the backend supports large video files and adjust frontend validations accordingly.
 
-\newpage
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.8\textwidth]{Resources/frontend.png}
-    \caption{Frontend Interface}
+    \caption{Screenshot of the feedback system's frontend, where users input their ride feedback.}
     \label{fig:frontend}
 \end{figure} 
 
