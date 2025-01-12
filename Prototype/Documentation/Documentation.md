@@ -295,7 +295,15 @@ The system incorporates robust security measures to protect user data and mainta
 - Anonymization of sensitive passenger data during FER processing.
 - Regular audits and compliance with data protection regulations.
 
-Overall, the system is built with scalability and modularity in mind, allowing for future extensions, such as integrating additional sensors, refining FER models for enhanced performance, or supporting advanced analytics and reporting tools.
+Overall, the system is built with scalability and modularity in mind, allowing for future extensions, such as integrating additional sensors, re1fining FER models for enhanced performance, or supporting advanced analytics and reporting tools.
+
+\newpage
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Resources/system_architecture.png}
+    \caption{System Architecture}
+    \label{fig:system_architecture}
+\end{figure} 
 
 \newpage
 
@@ -396,7 +404,6 @@ The model employs the **SFD detector** from the [face-alignment repository](http
 
 EmoNet provides tools for analyzing static images and video streams, supporting dynamic emotion recognition in real-time scenarios. Its dual focus on discrete and continuous emotion analysis allows for a comprehensive understanding of human affect, enabling its use in fields such as psychology, human-computer interaction, and entertainment.
 
-\newpage
 ## 4.3. Summary of Models
 
 | Model                          | Dataset    | Number of Classes | Valence/Arousal | Accuracy       |
@@ -441,7 +448,7 @@ For real-time detection, the [Raspberry Pi Camera Module 2](https://www.raspberr
   - High-definition video recording: 1080p30, 720p60, VGA90 video modes.
   - Still image capture.
 - **Connection**: Attaches via a 15cm ribbon cable to the CSI port on the Raspberry Pi.
-- **Software Support**: Numerous third-party libraries are available, including the Picamera Python library. Refer to the "Getting Started with Picamera" resource for additional guidance.
+- **Software Support**: Numerous third-party libraries are available, including the Picamera Python library. 
 
 ### 5.1.3. Operating System Setup
 The operating system was installed on a 128GB SanDisk Ultra microSD card with speeds up to 140MB/s. The [Raspberry Pi Imager](https://www.raspberrypi.com/software/) was used to install the following version:
@@ -486,7 +493,7 @@ This command opens an OpenCV window titled "Camera Preview," displaying real-tim
 \begin{figure}
     \centering
     \includegraphics[width=0.5\textwidth]{Resources/picamera_preview.png}
-    \caption{Real-time camera preview using the Picamera module on the Raspberry Pi 3B+.}
+    \caption{Real-time camera preview using the Picamera2 module on the Raspberry Pi 3B+.}
     \label{fig:picamera_preview}
 \end{figure} 
 
@@ -610,7 +617,7 @@ Prototype/FER/Models/HSEmotionONNX/logs/
 folder. A unique log file is created for each execution, with average FPS appended at the end.
 
 #### Recommendations
-Although the processed FPS is low (more than one second per frame), the successful deployment demonstrates the capability of integrating modern Python (3.11) and software tools on the dated Raspberry Pi 3B+. For practical applications, upgrading to a more powerful edge device is recommended to enhance performance. Future work includes testing this deployment on newer Raspberry Pi models to evaluate potential improvements in real-time emotion detection, enabling the "MoodPilot" system to assess passenger moods during trips.
+Although the processed FPS is low (more than one second per frame), the successful deployment demonstrates the capability of integrating modern Python (3.11) and software tools on the dated Raspberry Pi 3B+. For practical applications, upgrading to a more powerful edge device is recommended to enhance performance. Future work includes testing this deployment on newer Raspberry Pi models to evaluate potential improvements in real-time emotion detection, enabling the MoodPilot system to assess passenger moods during trips.
 
 \newpage
 ## 5.3. Data Collection System
@@ -754,6 +761,14 @@ The frontend of the feedback system is designed to collect user input on their r
   Provide user-friendly feedback for submission errors.
 - **File Upload Limits:**
   Ensure that the backend supports large video files and adjust frontend validations accordingly.
+
+\newpage
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Resources/frontend.png}
+    \caption{Frontend Interface}
+    \label{fig:frontend}
+\end{figure} 
 
 
 \newpage
