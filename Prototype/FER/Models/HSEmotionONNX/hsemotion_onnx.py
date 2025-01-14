@@ -159,7 +159,7 @@ def process_video(video_file, show_preview=True):
 if __name__ == "__main__":
 
     # Parse command-line arguments
-    parser = argparse.ArgumentParser(description="HSEmotionONNX: Real-time facial emotion recognition.")
+    parser = argparse.ArgumentParser(description="HSEmotionONNX: Real-time Facial Expression Recognition.")
 
     parser.add_argument("--video", type=str, default="camera", help="Path to video file or 'camera' for live feed.")
     parser.add_argument("--no-preview", action="store_false", help="Disable video preview during processing.")

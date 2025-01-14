@@ -129,7 +129,6 @@ How to write the project documentation (prototype document)
 \pagenumbering{arabic}
 
 
-<!-- Provare a mettere l'abstract direttamente nel frontespizio in piccolo -->
 \newpage
 
 
@@ -154,6 +153,7 @@ Two major models dominate the study of emotion categorization:
 - **Discrete Emotion Theory**: This theory suggests that humans experience a set of universal, basic emotions. Pioneered by Paul Ekman, research has identified six fundamental emotions—anger, disgust, fear, happiness, sadness, and surprise—each linked to distinct facial expressions and physiological responses. These emotions are universally recognizable across cultures, supporting the notion of a biological basis for emotional expression [@WikipediaEmotionClassification].  
 
 - **Dimensional Models**: These models conceptualize emotions as points within a continuous space rather than discrete categories. One prominent example is the *Circumplex Model*, proposed by James Russell, which organizes emotions along two axes:  
+  
   - **Valence**: The positivity or negativity of an emotion.  
   - **Arousal**: The intensity or activation level of an emotion [@Murphy2024].  
 
@@ -172,7 +172,7 @@ Each of these basic emotions has unique characteristics:
 - **Sadness**: Linked to loss or disappointment, characterized by lowered energy.  
 - **Surprise**: Prompted by unexpected events, facilitating rapid attention shifts with widened eyes and raised eyebrows.
 
-Ekman’s studies demonstrated that these emotions are universally recognized through facial expressions, even in cultures isolated from global influences. For instance, widened eyes and raised eyebrows universally signal surprise, while smiles denote happiness. This universality suggests a biological basis for basic emotions, enabling effective nonverbal communication.
+Ekman’s studies demonstrated that these emotions are universally recognized through facial expressions, even in cultures isolated from global influences. This universality suggests a biological basis for basic emotions, enabling effective nonverbal communication.
 
 ### 1.1.3. The Circumplex Model: Valence and Arousal
 
@@ -498,7 +498,7 @@ This command opens an OpenCV window titled "Camera Preview," displaying real-tim
 \end{figure} 
 
 ### 5.2.2. Emotion Detection Deployment
-For the emotion detection system on the Raspberry Pi 3B+, the "HSEmotion_Onnx" FER model was selected, paired with HAAR Cascade for face detection. This decision was based on the limited computational power of the Raspberry Pi 3B+ and the unavailability of a Neural Compute Stick 2 (NCS2) accelerator. The specific implementation is in the `Prototype/FER/Models/HSEmotionONNX/hsemotion_onnx.py` file.
+For the emotion detection system on the Raspberry Pi 3B+, the HSEmotionOnnx model (16 MB, supporting 8 emotion classes) was chosen for FER, combined with HAAR Cascade for face detection. This decision was based on the limited computational power of the Raspberry Pi 3B+ and the unavailability of a Neural Compute Stick 2 (NCS2) accelerator. The specific implementation is in the `Prototype/FER/Models/HSEmotionONNX/hsemotion_onnx.py` file.
 
 To explore the script’s options, use:
 
