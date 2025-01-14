@@ -300,7 +300,7 @@ Overall, the system is built with scalability and modularity in mind, allowing f
 \newpage
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=0.8\textwidth]{Resources/system_architecture.png}
+    \includegraphics[width=0.8\textwidth]{Resources/system_architecture.jpg}
     \caption{MoodPilot System Architecture.} 
     \label{fig:system_architecture}
 \end{figure} 
