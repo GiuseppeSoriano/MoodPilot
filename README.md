@@ -1,52 +1,63 @@
 ![MoodPilot](MoodPilot.png)
 
-MoodPilot: Combines "mood" and "pilot" to reflect an emphasis on emotional monitoring for improved guidance.
+**MoodPilot** combines "mood" and "pilot" to emphasize emotional monitoring for improved guidance in ride-hailing and autonomous driving services.
 
 ## Project Overview
 
-This project aims to develop an evaluation system for assessing the mood of passengers in self-driving cars or Uber rides. The system will evaluate the driving capacity of the driver during the trip and determine if the passenger(s) experienced any fear or discomfort. Additionally, passengers will be able to rate their trip experience and provide additional comments if they wish.
+MoodPilot is an innovative system designed to assess passenger satisfaction and emotional responses during trips in self-driving cars or ride-hailing services. By leveraging Facial Expression Recognition (FER) and passenger feedback, the system evaluates driving quality and passenger comfort, paving the way for adaptive, emotion-aware mobility solutions.
 
-## Features
-
-- **Mood Detection**: Analyze passengers' facial expressions and physiological signals to determine their mood during the trip.
-- **Driver Evaluation**: Assess the driving performance based on passenger feedback and mood analysis.
-- **Trip Rating**: Allow passengers to rate their trip experience at the end of the journey and provide optional comments.
-- **Data Collection**: Collect and store data for further analysis and improvement of the system.
-
-## Technologies Used
-
-- **Machine Learning**: For mood detection and analysis.
-- **Computer Vision**: To analyze facial expressions.
-- **Sensors**: To capture physiological signals.
-- **Backend**: For data storage and processing.
-- **Frontend**: For user interface and trip rating.
+The system includes the following objectives:
+- Evaluate passengers' emotions using advanced FER models.
+- Rate drivers or autonomous systems based on user satisfaction.
+- Collect and analyze emotional data for future system enhancements.
+- Explore real-time performance on edge devices like Raspberry Pi.
 
 ## Installation
 
-1. Clone the repository:
+1. **Clone the repository:**
     ```bash
-    git clone https://github.com/yourusername/passenger-mood-evaluation.git
+    git clone https://github.com/GiuseppeSoriano/Progetto_IndustrialApplications.git
     ```
-2. Navigate to the project directory:
+
+2. **Navigate to the project directory:**
     ```bash
-    cd passenger-mood-evaluation
+    cd Progetto_IndustrialApplications
     ```
+
+3. **Install dependencies for your environment:**
+    - For Raspberry Pi:
+        ```bash
+        pip install -r requirements_raspberrypi.txt
+        ```
+    - For other platforms:
+        ```bash
+        pip install -r requirements.txt
+        ```
+
+## Demo Setup
+
+### Raspberry Pi 3B+ Configuration
+- **Hardware**: Raspberry Pi 3B+ with a Camera Module 2 for live video input.
+- **Operating System**: Raspberry Pi OS 64-bit (Debian 12).
+- **Emotion Detection**: HSEmotionONNX with Haar Cascade for face detection.
+
+### Running the Demo
+1. **Camera Preview**:
+    ```bash
+    python3 Prototype/FER/camera.py
     ```
-
-## Contributing
-
-We welcome contributions to improve the system. Please follow these steps to contribute:
-
-1. Fork the repository.
-2. Create a new branch for your feature or bugfix.
-3. Commit your changes and push the branch to your fork.
-4. Create a pull request with a detailed description of your changes.
+2. **Real-Time Emotion Detection**:
+    ```bash
+    cd Prototype/FER/Models/HSEmotionONNX
+    python3 hsemotion_onnx.py
+    ```
 
 ## Palette
-Palette by [coolors.co](https://coolors.co/palette/f9dbbd-fca17d-da627d-9a348e-0d0628)
 
+MoodPilot’s design draws on the following color palette for its visuals:
 ![Palette](Palette.png)
+Palette created using [coolors.co](https://coolors.co/palette/f9dbbd-fca17d-da627d-9a348e-0d0628).
 
-## License
+## References
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+For more details on the models and methodologies, see the full academic documentation available in `Prototype/Documentation`.
