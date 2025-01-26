@@ -62,11 +62,11 @@ The **Data Collection System** is a key component of MoodPilot, designed to capt
 
 ### Backend
 
-The backend system processes uploaded videos, performs emotion recognition using the HSEmotionONNX model, and stores the data in MongoDB. It also provides REST API endpoints for seamless communication with the frontend.
+The backend system processes uploaded videos, performs emotion recognition using the EmoNet model, and stores the data in MongoDB. It also provides REST API endpoints for seamless communication with the frontend.
 
 #### Features
 - **Emotion Recognition**: 
-  - Processes video inputs to detect emotions using the HSEmotionONNX model.
+  - Processes video inputs to detect emotions using the EmoNet model.
   - Supports real-time processing and logs valence/arousal metrics.
 - **REST API Endpoints**:
   - `POST /report`: Uploads and processes video feedback from passengers.
@@ -175,7 +175,7 @@ The frontend provides a user-friendly interface for passengers to submit feedbac
 1. **Passenger Interaction**:
    - The user fills out a form to rate their ride and uploads a video file through the drag-and-drop interface.
 2. **Backend Processing**:
-   - The video is analyzed for emotion recognition using the HSEmotionONNX model.
+   - The video is analyzed for emotion recognition using the EmoNet model.
    - Feedback data and results are stored in MongoDB.
 
 ---
