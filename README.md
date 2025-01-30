@@ -54,8 +54,6 @@ This project was developed for educational purposes as part of the *Industrial A
     python3 hsemotion_onnx.py
     ```
 
----
-
 ## Data Collection System
 
 The **Data Collection System** is a key component of MoodPilot, designed to capture passenger feedback and emotional data during rides. It consists of a backend for emotion recognition and data storage, and a frontend for user interaction.
@@ -105,8 +103,6 @@ The backend system processes uploaded videos, performs emotion recognition using
      ```bash
      flask run --host=:: --port=8080
      ```
-
----
 
 ### Frontend
 
@@ -168,8 +164,6 @@ The frontend provides a user-friendly interface for passengers to submit feedbac
 - rxjs: 7.8.1
 - typescript: 5.4.5
 
----
-
 ### Workflow
 
 1. **Passenger Interaction**:
@@ -178,16 +172,12 @@ The frontend provides a user-friendly interface for passengers to submit feedbac
    - The video is analyzed for emotion recognition using the EmoNet model.
    - Feedback data and results are stored in MongoDB.
 
----
-
 ### Summary of API Endpoints
 
 | Method | Endpoint     | Description                          |
 |--------|--------------|--------------------------------------|
 | GET    | `/`          | Verifies the backend is running.    |
 | POST   | `/report`    | Uploads and processes feedback data.|
-
----
 
 ### Recommendations
 - Ensure the `.env` file is correctly configured with the database details.
